@@ -11,7 +11,7 @@
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
 <img
-  src="https://lpapple.wordpress.com/wp-content/uploads/2009/06/e6ada4e696b9.gif"
+  src="resource/konata.gif"
   height="300"
   align="right"
   alt="about me gif"
@@ -34,7 +34,7 @@
   <li>
     📜 许可证：
     <ul>
-      <li><a href="https://github.com/shirumesu/Anti-Anime-License">【反二次元许可证！】</a></li>
+      <li><a href="https://github.com/shirumesu/Anti-Anime-License">【反二次元许可证】二次元完蛋了喵！</a></li>
     </ul>
   </li>
 </ul>
@@ -64,7 +64,7 @@
 
 ---
 
-<h4 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h4>
+<h2 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h2>
 
 <p>
   如果你想要 LUCKY-STAR 这个title在你的账单上的话…❤️（不会告我侵权吧.jpg）
