@@ -6,8 +6,6 @@
 
 *𝙻𝚊𝚜𝚝 𝚖𝚊𝚗𝚞𝚊𝚕𝚕𝚢 𝚞𝚙𝚍𝚊𝚝𝚎𝚍:* `2026-04-17`
 
----
-
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
 <img
@@ -62,8 +60,6 @@
   </tr>
 </table>
 
----
-
 <h2 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h2>
 
 <p>
@@ -72,11 +68,7 @@
 <p>
   总之请便~感谢你能喜欢我的作品
 </p>
-<p>
-  <a href="https://www.buymeacoffee.com/shirumesu" rel="nofollow">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-red.png" alt="Buy Me A Coffee" height="40" width="170">
-  </a>
-</p>
+<p><a href="https://www.buymeacoffee.com/shirumesu" rel="nofollow"><img src="https://cdn.buymeacoffee.com/buttons/default-red.png" alt="Buy Me A Coffee" height="40" width="170"></a></p>
 
 ---
 
@@ -93,6 +85,6 @@
 ---
 
 <p align="center">
-  © 2006 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
+  © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
   <ruby>@shirumesu<rt>konakona</rt></ruby>
 </p>
