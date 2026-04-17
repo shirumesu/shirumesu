@@ -1,6 +1,4 @@
 # shirumesu
 
-<p align="center">
-  <img alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg" />
-</p>
+<img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg">
 
