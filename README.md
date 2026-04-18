@@ -17,7 +17,7 @@
 
 <ul>
   <li>
-    📦 工程repo:
+    📦 工程 repo:
     <ul>
       <li><a href="https://github.com/shirumesu/ui_bot">【ui_bot】基于Nonebot的QQ聊天机器人！</a></li>
     </ul>
@@ -33,6 +33,12 @@
     📜 许可证：
     <ul>
       <li><a href="https://github.com/shirumesu/Anti-Anime-License">【反二次元许可证】二次元完蛋了喵！</a></li>
+    </ul>
+  </li>
+  <li>
+    🔗 网站：
+    <ul>
+      <li><a href="https://www.konataizumi.com/">【在这里的此方】我也不知道该写什么，说到底有人看我博客吗</a></li>
     </ul>
   </li>
 </ul>
