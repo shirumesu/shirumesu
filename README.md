@@ -53,7 +53,7 @@
       <img
         width="100%"
         alt="GitHub stats"
-        src="https://github-readme-stats.vercel.app/api?username=shirumesu&show_icons=true&theme=transparent"
+        src="https://github-readme-stats.vercel.app/api?username=shirumesu&show_icons=true&theme=transparent&hide_border=true"
       />
     </td>
     <td width="45%" align="center">
