@@ -4,7 +4,7 @@
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=24&pause=2000&color=F74A18&background=FFFFFF00&center=true&vCenter=true&random=true&width=435&lines=%E5%B8%8C%E9%9C%B2%E6%A2%85%E6%96%AF%E3%81%AE%E6%B4%BB%E5%8B%95%E5%A0%B1%E5%91%8A%E3%81%AB%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%EF%BC%81" alt="Typing SVG" />
 </p>
 
-*𝙻𝚊𝚜𝚝 𝚖𝚊𝚗𝚞𝚊𝚕𝚕𝚢 𝚞𝚙𝚍𝚊𝚝𝚎𝚍:* `2026-04-17`
+*𝙻𝚊𝚜𝚝 𝚖𝚊𝚗𝚞𝚊𝚕𝚕𝚢 𝚞𝚙𝚍𝚊𝚝𝚎𝚍:* `2026-04-18`
 
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
@@ -53,7 +53,7 @@
       <img
         width="100%"
         alt="GitHub stats"
-        src="https://github-readme-stats.vercel.app/api?username=shirumesu&show_icons=true&icon_color=805AD5&text_color=718096&bg_color=ffffff&hide_title=true&hide_border=true&hide=contribs,issues"
+        src="https://github-readme-stats.vercel.app/api?username=shirumesu&show_icons=true&theme=transparent"
       />
     </td>
     <td width="45%" align="center">
