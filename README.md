@@ -72,7 +72,7 @@
 
 <div align="center">
 
-如果你想要 **LUCKY ⭐ STAR** 这个title在你的账单上的话…❤️
+如果你想要 **LUCKY-STAR** 这个title在你的账单上的话…❤️
 
 *（不会告我侵权吧.jpg）*
 
@@ -103,6 +103,6 @@
   <ruby>@shirumesu<rt>konakona</rt></ruby>
 </p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&text=Thank%20you%20for%20visiting!&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&text=©%202006%20~%202026%20埼玉%20·%20糟日部%20·%20陵樱学园高等部%20/%20SOS团%20@shirumesu&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
 
 </div>
