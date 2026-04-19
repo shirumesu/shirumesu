@@ -4,7 +4,7 @@
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=24&pause=2000&color=F74A18&background=FFFFFF00&center=true&vCenter=true&random=true&width=435&lines=%E5%B8%8C%E9%9C%B2%E6%A2%85%E6%96%AF%E3%81%AE%E6%B4%BB%E5%8B%95%E5%A0%B1%E5%91%8A%E3%81%AB%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%EF%BC%81" alt="Typing SVG" />
 </p>
 
-*𝙻𝚊𝚜𝚝 𝚖𝚊𝚗𝚞𝚊𝚕𝚕𝚢 𝚞𝚙𝚍𝚊𝚝𝚎𝚍:* `2026-04-18`
+<sub>📅 *Last updated:* `2026-04-18`</sub>
 
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
@@ -66,21 +66,27 @@
   </tr>
 </table>
 
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=shirumesu&theme=github-light&hide_border=true&bg_color=fffbf5&color=8b6680&line=ffc9e0&point=ffb7d5&area=true&area_color=b4f8c8" alt="Contribution Graph" />
+
 <h2 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h2>
 
-<p>
-  如果你想要 LUCKY-STAR 这个title在你的账单上的话…❤️（不会告我侵权吧.jpg）
-</p>
-<p>
-  总之请便~感谢你能喜欢我的作品
-</p>
-<p><a href="https://www.buymeacoffee.com/shirumesu" rel="nofollow"><img src="https://cdn.buymeacoffee.com/buttons/default-red.png" alt="Buy Me A Coffee" height="40" width="170"></a></p>
+<div align="center">
 
----
+如果你想要 **LUCKY ⭐ STAR** 这个title在你的账单上的话…❤️
 
-<p align="center">
-  <i>𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.</i>
-</p>
+*（不会告我侵权吧.jpg）*
+
+总之请便~ 感谢你能喜欢我的作品 💝
+
+<a href="https://www.buymeacoffee.com/shirumesu"><img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="45" width="190"></a>
+
+</div>
+
+<img src="resource/divider-sakura.svg" width="100%" alt="divider">
+
+<div align="center">
+
+*𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.*
 
 <p align="center">
   <a href="https://github.com/shirumesu/"><img alt="GitHub" src="https://img.icons8.com/?id=62856&format=png&color=000000"/></a>
@@ -88,9 +94,15 @@
   <a href="https://www.konataizumi.com/" rel="nofollow"><img alt="Website" src="https://img.icons8.com/material-outlined/27/000000/geography.png"/></a>
 </p>
 
----
+</div>
+
+<img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
 
 <p align="center">
   © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
   <ruby>@shirumesu<rt>konakona</rt></ruby>
 </p>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&text=Thank%20you%20for%20visiting!&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
+
+</div>
