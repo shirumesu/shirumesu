@@ -10,7 +10,7 @@
 
 <img
   src="resource/konata.gif"
-  height="300"
+  height="410"
   align="right"
   alt="about me gif"
 />
@@ -73,21 +73,16 @@
 <div align="center">
 
 如果你想要 **LUCKY-STAR** 这个title在你的账单上的话…❤️
-
 *（不会告我侵权吧.jpg）*
-
 总之请便~ 感谢你能喜欢我的作品 💝
-
 <a href="https://www.buymeacoffee.com/shirumesu"><img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="45" width="190"></a>
 
 </div>
 
-<img src="resource/divider-sakura.svg" width="100%" alt="divider">
-
+<img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
 <div align="center">
 
 *𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.*
-
 <p align="center">
   <a href="https://github.com/shirumesu/"><img alt="GitHub" src="https://img.icons8.com/?id=62856&format=png&color=000000"/></a>
   <a href="https://x.com/shirumesu" rel="nofollow"><img alt="X" src="https://img.icons8.com/?id=YfCbGWCWcuar&format=png&color=000000"/></a>
@@ -95,16 +90,12 @@
 </p>
 
 </div>
-
 <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
-
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
 
 ---
-
 <p align="center">
   © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
   <ruby>@shirumesu<rt>konakona</rt></ruby>
 </p>
-
 </div>
