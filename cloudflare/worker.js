@@ -36,7 +36,7 @@ function renderSvg(count) {
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="750" height="45" viewBox="0 0 750 45" role="img" aria-labelledby="title desc">
-  <title id="title">あなたの ${paddedCount} 人目の訪問者です</title>
+  <title id="title">💮 ~ あなたは ${paddedCount} 人目の訪問者です。 ~ 💮</title>
   <desc id="desc">GitHub profile visitor counter.</desc>
   <defs>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -53,9 +53,9 @@ function renderSvg(count) {
   <circle cx="720" cy="23" r="8" fill="#c9f0ff" opacity="0.5" />
 
   <text x="375" y="26" text-anchor="middle" dominant-baseline="central">
-    <tspan class="text">あなたの</tspan>
+    <tspan class="text">💮 ~ あなたは</tspan>
     <tspan class="count" dx="1">${escapeXml(paddedCount)}</tspan>
-    <tspan class="text" dx="1">人目の訪問者です</tspan>
+    <tspan class="text" dx="1">人目の訪問者です。 ~ 💮</tspan>
   </text>
 
   <style>
