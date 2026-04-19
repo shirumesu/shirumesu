@@ -85,17 +85,12 @@
   <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
   <div><em>𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.</em></div>
   <p align="center">
+    <sub>© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
+    <ruby>@shirumesu<rt>konakona</rt></ruby></sub>
+  </p>
+  <p align="center">
     <a href="https://github.com/shirumesu/"><img alt="GitHub" src="https://img.icons8.com/?id=62856&format=png&color=000000"/></a>
     <a href="https://x.com/shirumesu" rel="nofollow"><img alt="X" src="https://img.icons8.com/?id=YfCbGWCWcuar&format=png&color=000000"/></a>
     <a href="https://www.konataizumi.com/" rel="nofollow"><img alt="Website" src="https://img.icons8.com/material-outlined/27/000000/geography.png"/></a>
   </p>
 </div>
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=60&section=footer&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%" alt="footer wave">
-</div>
-
----
-<p align="center">
-  <sub>© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
-  <ruby>@shirumesu<rt>konakona</rt></ruby></sub>
-</p>
