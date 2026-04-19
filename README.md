@@ -71,32 +71,29 @@
 <h2 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h2>
 
 <div align="center">
-
-如果你想要 **LUCKY-STAR** 这个title在你的账单上的话…❤️
-
-*（不会告我侵权吧.jpg）*
-
-总之请便~ 感谢你能喜欢我的作品 💝
-<a href="https://www.buymeacoffee.com/shirumesu"><img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="45" width="190"></a>
-
+  <p>
+    如果你想要 <strong>LUCKY-STAR</strong> 这个title在你的账单上的话…❤️<br>
+    <em>（不会告我侵权吧.jpg）</em><br><br>
+    总之请便~ 感谢你能喜欢我的作品 💝
+  </p>
+  <a href="https://www.buymeacoffee.com/shirumesu">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="40" width="169">
+  </a>
 </div>
 
 <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
 <div align="center">
-
-*𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.*
-<p align="center">
-  <a href="https://github.com/shirumesu/"><img alt="GitHub" src="https://img.icons8.com/?id=62856&format=png&color=000000"/></a>
-  <a href="https://x.com/shirumesu" rel="nofollow"><img alt="X" src="https://img.icons8.com/?id=YfCbGWCWcuar&format=png&color=000000"/></a>
-  <a href="https://www.konataizumi.com/" rel="nofollow"><img alt="Website" src="https://img.icons8.com/material-outlined/27/000000/geography.png"/></a>
-</p>
-
+  <p><em>𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.</em></p>
+  <p align="center">
+    <a href="https://github.com/shirumesu/"><img alt="GitHub" src="https://img.icons8.com/?id=62856&format=png&color=000000" height="28" width="28"></a>
+    <a href="https://x.com/shirumesu" rel="nofollow"><img alt="X" src="https://img.icons8.com/?id=YfCbGWCWcuar&format=png&color=000000" height="28" width="28"></a>
+    <a href="https://www.konataizumi.com/" rel="nofollow"><img alt="Website" src="https://img.icons8.com/material-outlined/27/000000/geography.png" height="28" width="28"></a>
+  </p>
 </div>
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=72&section=footer&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
 
 ---
 <p align="center">
   <sub>© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
   <ruby>@shirumesu<rt>konakona</rt></ruby></sub>
 </p>
-</div>
