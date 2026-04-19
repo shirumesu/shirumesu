@@ -66,14 +66,16 @@
   </tr>
 </table>
 
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=shirumesu&theme=github-light&hide_border=true&bg_color=fffbf5&color=8b6680&line=ffc9e0&point=ffb7d5&area=true&area_color=b4f8c8" alt="Contribution Graph" />
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=shirumesu&theme=github-light&hide_border=true&bg_color=FFFFFF&color=8b6680&line=ffc9e0&point=ffb7d5&area=true&area_color=b4f8c8" alt="Contribution Graph" />
 
 <h2 align="center">🍸 ~ 𝑨𝒏𝒅…，𝑶𝒏𝒆 𝑴𝒐𝒓𝒆 𝑻𝒉𝒊𝒏𝒈... ~ 🍸</h2>
 
 <div align="center">
 
 如果你想要 **LUCKY-STAR** 这个title在你的账单上的话…❤️
+
 *（不会告我侵权吧.jpg）*
+
 总之请便~ 感谢你能喜欢我的作品 💝
 <a href="https://www.buymeacoffee.com/shirumesu"><img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="45" width="190"></a>
 
@@ -90,12 +92,11 @@
 </p>
 
 </div>
-<img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24,12,6&height=100&section=footer&fontSize=20&fontColor=8b6680&animation=twinkling" width="100%"/>
 
 ---
 <p align="center">
-  © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
-  <ruby>@shirumesu<rt>konakona</rt></ruby>
+  <sub>© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
+  <ruby>@shirumesu<rt>konakona</rt></ruby></sub>
 </p>
 </div>
