@@ -85,7 +85,7 @@
   <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
   <div><em>𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.</em></div>
   <p align="center">
-    <© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
+    © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
     <ruby>@shirumesu<rt>konakona</rt></ruby>
   </p>
   <p align="center">
