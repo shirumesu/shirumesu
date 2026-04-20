@@ -19,14 +19,14 @@
   <li>
     📦 工程 repo:
     <ul>
-      <li><a href="https://github.com/shirumesu/ui_bot">【ui_bot】基于Nonebot的QQ聊天机器人！</a></li>
+      <li><a href="https://github.com/shirumesu/ui_bot">【羽衣bot】基于Nonebot的QQ聊天机器人！</a></li>
     </ul>
   </li>
   <li>
     🌀 Ai repo：
     <ul>
       <li><a href="https://github.com/shirumesu/searchflow">【searchflow】让你的Ai变得会搜索的skill！</a></li>
-      <li><a href="https://github.com/shirumesu/gei">【Gei - 芸】一套完整的Ai工程skill</a></li>
+      <li><a href="https://github.com/shirumesu/respond-like-human">【Respond-like-human】让你的GPT说人话的skill！</a></li>
     </ul>
   </li>
   <li>
@@ -38,7 +38,14 @@
   <li>
     🔗 网站：
     <ul>
-      <li><a href="https://www.konataizumi.com/">【在这里的此方】我也不知道该写什么，说到底有人看我博客吗</a></li>
+      <li><a href="https://www.konataizumi.com/">【在这里的此方】我也不知道该写什么……</a></li>
+    </ul>
+  </li>
+  <li>
+    📝 Todo repo：
+    <ul>
+      <li><a href="https://github.com/shirumesu/Kagami-Agent">【镜】一个自己编写的Agent cli！</a></li>
+      <li><a href="https://github.com/shirumesu/gei">【Gei - 芸】一套完整的Ai工程skill</a></li>
     </ul>
   </li>
 </ul>
