@@ -79,8 +79,10 @@
 
 <div align="center">
   <p>
-    如果你想要 <strong>LUCKY-STAR</strong> 这个title在你的账单上的话…❤️<br>
-    <em>（不会告我侵权吧.jpg）</em><br><br>
+    如果你想要 <strong>LUCKY.STAR</strong> 这个title在你的账单上的话…❤️<br>
+    <em>（不会告我侵权吧.jpg）</em><br>
+    Belike：<br>
+    <img src="resource/Coffee.jpg" style="width:340px; height:120px;" alt="Coffee jpg"><br>
     总之请便~ 感谢你能喜欢我的作品 💝
   </p>
   <a href="https://www.buymeacoffee.com/shirumesu">
