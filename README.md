@@ -25,9 +25,8 @@
   <li>
     🌀 Ai repo：
     <ul>
-      <li><a href="https://github.com/shirumesu/gei">【芸】一套完整的Ai工程skill</a></li>
-      <span style="font-size: 0.6em; color: gray;">↑ 覆盖所有使用场景（编码，网络搜索，记忆，项目Spec管理）的系列SKILL，都来用用吧，他真的很好用哦？ ↑</span>
-      <li><a href="https://github.com/shirumesu/respond-like-human">【Respond-like-human】让你的GPT说人话的skill！</a></li>
+      <li><a href="https://github.com/shirumesu/gei">【芸】一套Skill涵盖所有使用场景</a></li>
+      <li><a href="https://github.com/shirumesu/respond-like-human">【Respond-like-human】让你的GPT说人话</a></li>
     </ul>
   </li>
   <li>
@@ -42,11 +41,16 @@
       <li><a href="https://www.konataizumi.com/">【在这里的此方】我也不知道该写什么……</a></li>
     </ul>
   </li>
+    <li>
+    🌸 好玩 repo：
+    <ul>
+      <li><a href="https://github.com/shirumesu/GPTize">【GPTize】任何文本变成GPT一样味大，无需多言。"All you need is GPTize"</a></li>
+    </ul>
+  </li>
   <li>
     📝 Todo repo：
     <ul>
       <li><a href="https://github.com/shirumesu/Kagami-Agent">【镜】一个自己编写的Agent cli！</a></li>
-      <li><a href="https://github.com/shirumesu/GPTize">【GPTize】任何文本变成GPT一样味大，无需多言。"All you need is GPTize"</a></li>
     </ul>
   </li>
 </ul>
