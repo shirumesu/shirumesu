@@ -45,7 +45,7 @@
     <li>
     🌸 好玩 repo：
     <ul>
-      <li><a href="https://github.com/shirumesu/GPTize">【GPTize】任何文本变成GPT一样味大，无需多言。"All you need is GPTize"</a></li>
+      <li><a href="https://github.com/shirumesu/GPTize">【GPTize】让文本变成GPT一样味大。"All you need is GPTize"</a></li>
     </ul>
   </li>
   <li>
