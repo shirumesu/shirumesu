@@ -20,6 +20,7 @@
     📦 工程 repo:
     <ul>
       <li><a href="https://github.com/shirumesu/ui_bot">【羽衣bot】基于Nonebot的QQ聊天机器人！</a></li>
+      <li><a href="https://github.com/shirumesu/Neopot">【Neo-pot】pot-desktop的现代化重构版本</a></li>
     </ul>
   </li>
   <li>
@@ -51,7 +52,6 @@
     📝 Todo repo：
     <ul>
       <li><a href="https://github.com/shirumesu/Kagami-Agent">【镜】一个自己编写的Agent cli！</a></li>
-      <li><a href="https://github.com/shirumesu/Neopot">【Neo-pot】pot-desktop的现代化重构版本</a></li>
       <li><a href="https://github.com/shirumesu/weak-zhi-bar-bench">【weak-zhi-bar-bench】AI-benchmark。弱智吧大战AI新赛季！</a></li>
     </ul>
   </li>
