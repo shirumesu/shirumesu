@@ -4,7 +4,7 @@
   <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=24&pause=2000&color=F74A18&background=FFFFFF00&center=true&vCenter=true&random=true&width=435&lines=%E5%B8%8C%E9%9C%B2%E6%A2%85%E6%96%AF%E3%81%AE%E6%B4%BB%E5%8B%95%E5%A0%B1%E5%91%8A%E3%81%AB%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%EF%BC%81" alt="Typing SVG" />
 </p>
 
-<sub>📅 *Last updated:* `2026-05-14`</sub>
+<sub>📅 *Last updated:* `2026-06-20`</sub>
 
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
@@ -51,7 +51,8 @@
   <li>
     📝 Todo repo：
     <ul>
-      <li><a href="https://github.com/shirumesu/Kagami-Agent">【镜】一个自己编写的Agent cli！</a></li>
+      <li><a href="https://github.com/shirumesu/VoidKagami">【空镜 | VoidKagami】基于[Pi](https://pi.dev/)的个人实验性Agent</a></li>
+      <li><a href="https://github.com/shirumesu/MelonBanG">【MelonBanG】瓜番，自用的聚合追番桌面应用</a></li>
     </ul>
   </li>
 </ul>
