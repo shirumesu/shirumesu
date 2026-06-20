@@ -51,7 +51,7 @@
   <li>
     📝 Todo repo：
     <ul>
-      <li><a href="https://github.com/shirumesu/VoidKagami">【空镜 | VoidKagami】基于[Pi](https://pi.dev/)的个人实验性Agent</a></li>
+      <li><a href="https://github.com/shirumesu/VoidKagami">【空镜 | VoidKagami】基于 Pi 的个人实验性Agent</a></li>
       <li><a href="https://github.com/shirumesu/MelonBanG">【MelonBanG】瓜番，自用的聚合追番桌面应用</a></li>
     </ul>
   </li>
