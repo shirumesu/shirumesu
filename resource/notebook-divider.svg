@@ -10,8 +10,6 @@
     </filter>
   </defs>
   
-  <!-- 纸张背景 -->
-  <rect width="800" height="28" fill="#fffbf5" opacity="0.14"/>
   <rect width="800" height="28" fill="url(#notebookDots)" opacity="0.55"/>
   
   <!-- 手绘线条 -->
