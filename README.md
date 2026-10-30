@@ -1,10 +1,6 @@
 <img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg">
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=24&pause=2000&color=F74A18&background=FFFFFF00&center=true&vCenter=true&random=true&width=435&lines=%E5%B8%8C%E9%9C%B2%E6%A2%85%E6%96%AF%E3%81%AE%E6%B4%BB%E5%8B%95%E5%A0%B1%E5%91%8A%E3%81%AB%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%EF%BC%81" alt="Typing SVG" />
-</p>
-
-<sub>📅 *Last updated:* `2026-10-24`</sub>
+<sub>📅 *Last updated:* `2026-10-31`</sub>
 
 <h2 align="center"> 🌱 ~ 𝒂𝒃𝒐𝒖𝒕 𝒎𝒆 ~ 🌱 </h2>
 
@@ -82,11 +78,7 @@
 
 <div align="center">
   <p>
-    如果你想要 <strong>LUCKY.STAR</strong> 这个title在你的账单上的话…❤️<br>
-    <em>（不会告我侵权吧.jpg）</em><br>
-    Belike：<br>
-    <img src="resource/Coffee.jpg" style="width:340px; height:120px;" alt="Coffee jpg"><br>
-    总之请便~ 感谢你能喜欢我的作品 💝
+    感谢你能喜欢我的作品？💝
   </p>
   <a href="https://www.buymeacoffee.com/shirumesu">
     <img src="https://cdn.buymeacoffee.com/buttons/default-pink.png" alt="Buy Me A Coffee" height="40" width="169">
@@ -95,7 +87,6 @@
 
 <div align="center">
   <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
-  <div><em>𝓣𝓻𝓾𝓮 𝓹𝓸𝓮𝓽𝓻𝔂 𝓲𝓼 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓵𝓲𝓼𝓽𝓮𝓷𝓮𝓻.</em></div>
   <p align="center">
     © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
     <ruby>@shirumesu<rt>konakona</rt></ruby>
