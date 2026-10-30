@@ -1,9 +1,9 @@
+<img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg">
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="resource/banner-dark.svg">
   <img width="100%" alt="shirumesu's notebook" src="resource/banner-light.svg">
 </picture>
-
-<img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg">
 
 <p align="right"><sub>📅 <i>Last updated:</i> <code>2026-10-31</code></sub></p>
 
@@ -34,12 +34,6 @@
   <a href="https://github.com/shirumesu/Neopot"><img width="32%" alt="Neo-pot" src="resource/card-neopot.svg"></a>
 </p>
 
-<p align="center">
-  <img alt="MelonBanG stars" src="https://img.shields.io/github/stars/shirumesu/MelonBanG?style=flat-square&logo=github&label=MelonBanG&color=ffd3e4&labelColor=6f4a66">
-  <img alt="羽衣 bot stars" src="https://img.shields.io/github/stars/shirumesu/ui_bot?style=flat-square&logo=github&label=ui_bot&color=ffd3e4&labelColor=6f4a66">
-  <img alt="Neo-pot stars" src="https://img.shields.io/github/stars/shirumesu/Neopot?style=flat-square&logo=github&label=Neo-pot&color=ffd3e4&labelColor=6f4a66">
-</p>
-
 <table>
   <tr>
     <td width="50%" valign="top">
@@ -67,16 +61,6 @@
 <p align="center"><img height="58" alt="my website" src="resource/title-site.svg"></p>
 
 <a href="https://www.konataizumi.com/"><img width="100%" alt="杜撰录 · konataizumi.com" src="resource/site-card.svg"></a>
-
-**📝 最近的文章**
-
-<!-- BLOG-POST-LIST:START -->
-- [迁移完了](https://www.konataizumi.com/posts/migration/) <sub>2026-09-07</sub>
-- [记录一下自用的Agent.md](https://www.konataizumi.com/posts/agent-md-notes/) <sub>2026-04-10</sub>
-- [记一次Cloudflare盗号](https://www.konataizumi.com/posts/cloudflare-account-compromise/) <sub>2026-03-23</sub>
-- [我说Cloudflare神了](https://www.konataizumi.com/posts/cloudflare-pages-switch/) <sub>2026-03-22</sub>
-<!-- BLOG-POST-LIST:END -->
-
 <p align="center"><img height="58" alt="github stats" src="resource/title-stats.svg"></p>
 
 <p align="center">
@@ -104,10 +88,6 @@
   </a>
 </div>
 
-<div align="center">
-  <img src="resource/notebook-divider.svg" width="100%" alt="notebook divider">
-  <p>
-    © 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团
-    <ruby>@shirumesu<rt>konakona</rt></ruby>
-  </p>
-</div>
+<br>
+
+<img width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg">
