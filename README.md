@@ -5,7 +5,7 @@
   <img width="100%" alt="shirumesu's notebook" src="resource/banner-light.svg">
 </picture>
 
-<p align="right"><sub>📅 <i>Last updated:</i> <code>2026-10-31</code></sub></p>
+<p align="right"><sub>📅 <i>Last updated:</i> <code>2026-11-01</code></sub></p>
 
 <p align="center"><picture><img height="58" alt="about me" src="resource/title-about.svg"></picture></p>
 
