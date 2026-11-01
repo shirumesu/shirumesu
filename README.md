@@ -1,4 +1,4 @@
-<img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg">
+<picture><img width="100%" alt="visitor counter" src="https://gitprofile.shiying.workers.dev/visitor.svg"></picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="resource/banner-dark.svg">
@@ -7,9 +7,9 @@
 
 <p align="right"><sub>📅 <i>Last updated:</i> <code>2026-10-31</code></sub></p>
 
-<p align="center"><img height="58" alt="about me" src="resource/title-about.svg"></p>
+<p align="center"><picture><img height="58" alt="about me" src="resource/title-about.svg"></picture></p>
 
-<img src="resource/konata.gif" width="232" align="right" alt="konata">
+<picture><img src="resource/konata.gif" width="232" align="right" alt="konata"></picture>
 
 吾辈是希露梅斯，  
 别看我这样子，其实我之前是个二次元.jpg  
@@ -23,7 +23,7 @@
 
 <br clear="all">
 
-<p align="center"><img height="58" alt="projects" src="resource/title-projects.svg"></p>
+<p align="center"><picture><img height="58" alt="projects" src="resource/title-projects.svg"></picture></p>
 
 <p align="center">
   <a href="https://github.com/shirumesu/MelonBanG"><img width="32%" alt="MelonBanG" src="resource/card-melonbang.svg"></a>
@@ -55,10 +55,10 @@
   </tr>
 </table>
 
-<p align="center"><img height="58" alt="my website" src="resource/title-site.svg"></p>
+<p align="center"><picture><img height="58" alt="my website" src="resource/title-site.svg"></picture></p>
 
 <a href="https://www.konataizumi.com/"><img width="100%" alt="杜撰录 · konataizumi.com" src="resource/site-card.svg"></a>
-<p align="center"><img height="58" alt="github stats" src="resource/title-stats.svg"></p>
+<p align="center"><picture><img height="58" alt="github stats" src="resource/title-stats.svg"></picture></p>
 
 <p align="center">
   <picture>
@@ -76,7 +76,7 @@
   <img width="100%" alt="Contribution graph" src="https://github.pumbas.net/api/contributions/shirumesu?days=31&radius=14&colour=d4507a&bgColour=fffaf4&lineColour=8b6680&dotColour=ffb7d5&areaColour=ffd3e4&area=true&hide_border=true">
 </picture>
 
-<p align="center"><img height="58" alt="one more thing" src="resource/title-more.svg"></p>
+<p align="center"><picture><img height="58" alt="one more thing" src="resource/title-more.svg"></picture></p>
 
 <div align="center">
   <p>感谢你能喜欢我的作品？💝</p>
@@ -87,4 +87,4 @@
 
 <br>
 
-<img width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg">
+<picture><img width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg"></picture>

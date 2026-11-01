@@ -43,7 +43,6 @@
       <rect width="880" height="400" fill="url(#dots)"/>
       <g stroke="#f6e1ea" stroke-width="1"><line x1="62" y1="60" x2="864" y2="60"/><line x1="62" y1="90" x2="864" y2="90"/><line x1="62" y1="120" x2="864" y2="120"/><line x1="62" y1="150" x2="864" y2="150"/><line x1="62" y1="180" x2="864" y2="180"/><line x1="62" y1="210" x2="864" y2="210"/><line x1="62" y1="240" x2="864" y2="240"/><line x1="62" y1="270" x2="864" y2="270"/><line x1="62" y1="300" x2="864" y2="300"/><line x1="62" y1="330" x2="864" y2="330"/><line x1="62" y1="360" x2="864" y2="360"/></g>
       <line x1="76" y1="2" x2="76" y2="398" stroke="#f3a6c2" stroke-width="1.2" opacity="0.55"/>
-      <line x1="80" y1="2" x2="80" y2="398" stroke="#f3a6c2" stroke-width="0.8" opacity="0.35"/>
     </g>
   </g>
   <circle cx="38" cy="46" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="84" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="122" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="160" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="198" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="236" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="274" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="312" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/><circle cx="38" cy="350" r="9" fill="none" stroke="#f6c3d7" stroke-width="1.2"/>
