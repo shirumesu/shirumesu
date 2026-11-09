@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="293" height="300" viewBox="0 0 293 300" role="img" aria-label="melon_libtorrent — MelonBanG 的下载引擎">
+  <style>
+    .drift { animation: drift 22s ease-in-out infinite; }
+    .drift2 { animation: drift2 28s ease-in-out infinite; }
+    @keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(36px, 14px); } }
+    @keyframes drift2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-40px, -10px); } }
+    .sweep { animation: sweep .9s cubic-bezier(.3, .7, .2, 1) both; transform-box: fill-box; transform-origin: left center; }
+    @keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .draw { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 1.4s ease-out forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .flow { stroke-dasharray: 4 6; animation: flow 1.4s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -20; } }
+    .fade { animation: fade .8s ease-out both; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .blink { animation: blink 3.2s ease-in-out infinite; }
+    .twinkle { animation: twinkle 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes twinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(.5); } }
+    @keyframes blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#177F98" stop-opacity=".045"/><stop offset=".6" stop-color="#177F98" stop-opacity="0"/><stop offset="1" stop-color="#F4D35E" stop-opacity=".07"/>
+    </linearGradient>
+    <radialGradient id="gSea"><stop offset="0" stop-color="#177F98" stop-opacity=".11"/><stop offset="1" stop-color="#177F98" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gSun"><stop offset="0" stop-color="#F4D35E" stop-opacity=".2"/><stop offset="1" stop-color="#F4D35E" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".18" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="marker" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F4D35E" stop-opacity=".75"/><stop offset=".9" stop-color="#F4D35E" stop-opacity=".6"/><stop offset="1" stop-color="#F4D35E" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r=".9" fill="#1F3A4A" fill-opacity=".14"/></pattern>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .12  0 0 0 0 .23  0 0 0 0 .29  .12 0 0 0 -.035"/>
+    </filter>
+    
+  </defs>
+  <clipPath id="tp"><rect x="8" y="4" width="277" height="292" rx="8"/></clipPath>
+  <g clip-path="url(#tp)">
+    <rect x="8" y="4" width="277" height="292" fill="#FAFCFB"/><rect x="8" y="4" width="277" height="292" fill="url(#wash)"/>
+    
+  </g>
+  <rect x="8.5" y="4.5" width="276" height="291" rx="7.5" fill="none" stroke="#1F3A4A" stroke-opacity=".1"/>
+  <rect x="9.5" y="5.5" width="274" height="289" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
+  <line class="flow" x1="-10" y1="150" x2="24" y2="150" stroke="#177F98" stroke-width="1.6"/>
+  <path d="M18 145 24 150 18 155" fill="none" stroke="#177F98" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="38" font-size="12" fill="#177F98" data-w="m" letter-spacing="2">PACKAGE</text>
+  <text x="32" y="62" font-size="12" fill="#1F3A4A" fill-opacity=".62">← used by MelonBanG</text>
+  <text x="32" y="112" font-size="20" fill="#1F3A4A" data-w="m" data-maxw="236">melon_libtorrent</text>
+  <text x="32" y="162" font-size="15" fill="#1F3A4A" fill-opacity=".86">MelonBanG 的下载引擎</text>
+  <text x="32" y="188" font-size="15" fill="#1F3A4A" data-maxw="236" fill-opacity=".86">libtorrent 2.1 的 Flutter 绑定</text>
+  <text x="32" y="214" font-size="15" fill="#1F3A4A" data-maxw="236" fill-opacity=".86">内置 HTTP 服务，边下边播</text>
+  <line x1="32" y1="242" x2="261" y2="242" stroke="#1F3A4A" stroke-opacity=".1"/>
+  <text x="32" y="270" font-size="12" fill="#1F3A4A" data-maxw="200" fill-opacity=".62">C++ · macOS / Win / Linux</text>
+  <text x="261" y="270" font-size="12" fill="#177F98" text-anchor="end">↗</text>
+</svg>

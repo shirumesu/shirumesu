@@ -1,0 +1,161 @@
+<title>shirumesu 夏日笔记</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<style>
+  /* Layout: a tinted workbench (toolbar + change notes) around a faithful GitHub README column. */
+  :root {
+    --bench: #f1f5f6;
+    --bench-ink: #1f3a4a;
+    --bench-soft: #5d7381;
+    --line: #d3dfe3;
+    --accent: #177f98;
+    --chip: #e6eff2;
+    --gh-bg: #ffffff;
+    --gh-border: #d0d7de;
+    --gh-muted: #59636e;
+    --gh-head: #f6f8fa;
+    --hot: #ff7a45;
+    --font-display: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "PingFang SC", sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bench: #0f1d20; --bench-ink: #d5efea; --bench-soft: #8fb3b0; --line: #24423f; --accent: #6cc6dc; --chip: #163330; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bench: #0f1d20; --bench-ink: #d5efea; --bench-soft: #8fb3b0; --line: #24423f; --accent: #6cc6dc; --chip: #163330; color-scheme: dark; }
+  /* simulated GitHub page, driven by the toolbar switch */
+  .gh-dark { --gh-bg: #0d1117; --gh-border: #3d444d; --gh-muted: #9198a1; --gh-head: #151b23; }
+
+  body { background: var(--bench); color: var(--bench-ink); font: 14px/1.6 var(--font-body);
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 48px; }
+  .wrap { max-width: 960px; margin: 0 auto; display: grid; gap: 20px; }
+
+  header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+  h1 { font: 700 26px/1.2 var(--font-display); margin: 0; text-wrap: balance; letter-spacing: .02em; }
+  h1 small { display: block; font: 500 13px/1.4 var(--font-body); color: var(--bench-soft); letter-spacing: .04em; margin-top: 4px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--chip); }
+  .seg button { font: 500 13px var(--font-body); color: var(--bench-soft); background: none; border: 0; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--bench); }
+  .toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px 5px 10px; background: var(--chip); }
+  .toggle input { accent-color: var(--hot); width: 16px; height: 16px; margin: 0; }
+  button:focus-visible, .toggle:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  details.notes { border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; }
+  details.notes summary { cursor: pointer; font: 700 15px var(--font-display); padding: 10px 0; }
+  .notes ol { margin: 0 0 14px; padding-left: 1.4em; display: grid; gap: 6px; max-width: 75ch; }
+  .notes li::marker { color: var(--accent); font-weight: 700; }
+  .notes b { color: var(--accent); font-weight: 600; }
+  .notes code { font-size: 12.5px; background: var(--chip); padding: 1px 5px; border-radius: 5px; }
+
+  .gh { background: var(--gh-bg); border: 1px solid var(--gh-border); border-radius: 8px; overflow: hidden; color: var(--gh-muted); }
+  .gh-head { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--gh-border); background: var(--gh-head); font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .gh-head span { color: var(--gh-muted); }
+  .md { position: relative; padding: 16px 24px 24px; }
+  .md p, .md > picture, .md > a { margin: 0 0 16px; }
+  .md picture { display: contents; }
+  .md img { max-width: 100%; vertical-align: middle; }
+  .md p { line-height: 1.5; }
+  .md > img, .md > picture > img, .md > a > img { display: block; margin-bottom: 16px; }
+  .ext { display: inline-grid; place-items: center; width: 49%; aspect-ratio: 495 / 195; border-radius: 16px; border: 1px dashed currentColor; font-size: 12px; color: var(--gh-muted); vertical-align: middle; text-align: center; padding: 8px; box-sizing: border-box; }
+  .ext.wide { display: grid; width: 100%; aspect-ratio: 880 / 260; margin-bottom: 16px; }
+  .ext b { display: block; font-size: 13px; }
+
+  .show-hot a img { outline: 2px dashed var(--hot); outline-offset: -3px; }
+  .hot-layer { position: absolute; inset: 0; pointer-events: none; }
+  .hot-label { position: absolute; font: 600 11px/1 var(--font-body); background: var(--hot); color: #fff; padding: 4px 7px; border-radius: 0 0 6px 0; white-space: nowrap; max-width: 90%; overflow: hidden; text-overflow: ellipsis; }
+
+  @media (max-width: 560px) { .md { padding: 12px; } }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>shirumesu 夏日笔记<small>GitHub profile README · 2026-11-09 改版预览</small></h1>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="GitHub 主题">
+        <button id="gh-light" type="button" aria-pressed="true">GitHub 浅色</button>
+        <button id="gh-dark" type="button" aria-pressed="false">GitHub 深色</button>
+      </div>
+      <label class="toggle" for="show-hot"><input id="show-hot" type="checkbox" checked>显示可点击区域</label>
+    </div>
+  </header>
+
+  <details class="notes" open>
+    <summary>这次改了什么</summary>
+    <ol>
+      <li><b>四个颜色，各管一件事</b>：墨色写字（次要文字用同色 60%），纸色做底，海蓝表示可以点、可以跟的东西（标签、链接、强调词），柠檬黄只用来强调（荧光笔、便签、主项目、按钮）。之前的橙、紫、珊瑚红都去掉了。</li>
+      <li><b>四个字号</b>：12 注释 · 15 正文 · 20 标题 · 32 展示。词云除外。</li>
+      <li><b>便当盒</b>：所有卡片对齐同一个三栏网格。格子越大越重要，从主项目一路缩到 MOD 小条。about 是一整张 bento，引言缩成 intro 卡角落里的一张小便签。my website 和 one more thing 重新分成两节。</li>
+      <li><b>词云</b>：去掉了阴影和立体感，改成方格手帐页。每句话按顺序“写”出来，再加荧光笔、便签、手绘圈和下划线。</li>
+      <li><b>分割标题</b>：文字居中，两侧对称排开：柠檬圆点、闪烁小星、小圆环、手绘波浪线，最后接虚线。</li>
+      <li><b>玻璃只用一点</b>：博客卡片上一块磨砂面板压在照片上，主项目卡里两片很淡的玻璃片。渐变都降到了几乎看不出来。</li>
+    </ol>
+  </details>
+
+  <div class="gh" id="gh">
+    <div class="gh-head">shirumesu / <span>README.md</span></div>
+    <article class="md" id="md">
+<picture><img width="100%" alt="✿ あなたは …… 人目の訪問者です。 ✿" src="resource/visitor-preview.svg"></picture>
+<picture><img width="100%" alt="shirumesu's notebook · Last updated 2026-11-09" src="resource/banner.svg"></picture>
+<picture><img width="100%" alt="about me" src="resource/title-about.svg"></picture>
+<picture><img width="100%" alt="吾辈是希露梅斯，别看我这样子，其实我之前是个二次元.jpg。虽然从来没有认可过自己的技术……但姑且就认为是技术宅吧！毕竟去异世界这种事说不定也会发生哦。总而言之，我在做一些有趣的事，让我觉得开心的事，如果让你也觉得有趣就再好不过了。The truth shall make you free. —— John 8:32" src="resource/about.svg"></picture>
+<picture><img width="100%" alt="projects" src="resource/title-projects.svg"></picture>
+<p align="center">
+<a href="https://github.com/shirumesu/MelonBanG"><img width="66.6%" alt="MelonBanG — 得意之作！基于 Bangumi 的追番播放器" src="resource/proj-melonbang.svg"></a><a href="https://github.com/shirumesu/melon_libtorrent"><img width="33.3%" alt="melon_libtorrent — MelonBanG 的下载引擎" src="resource/proj-libtorrent.svg"></a><br>
+<a href="https://github.com/shirumesu/ui_bot"><img width="33.3%" alt="羽衣 bot" src="resource/proj-uibot.svg"></a><a href="https://github.com/shirumesu/Neopot"><img width="33.3%" alt="Neo-pot" src="resource/proj-neopot.svg"></a><a href="https://github.com/shirumesu/gei"><img width="33.3%" alt="芸" src="resource/proj-gei.svg"></a><br>
+<a href="https://github.com/shirumesu/GPTize"><img width="33.3%" alt="GPTize" src="resource/row-gptize.svg"></a><a href="https://github.com/shirumesu/respond-like-human"><img width="33.3%" alt="Respond-like-human" src="resource/row-respond.svg"></a><a href="https://github.com/shirumesu/Anti-Anime-License"><img width="33.3%" alt="反二次元许可证" src="resource/row-antianime.svg"></a><br>
+<a href="https://github.com/shirumesu/ShareTheSpire2"><img width="49.95%" alt="ShareTheSpire2" src="resource/row-sharespire.svg"></a><a href="https://github.com/shirumesu/Shop-Enhancement-STS2"><img width="49.95%" alt="Shop-Enhancement-STS2" src="resource/row-shopsts2.svg"></a>
+</p>
+<picture><img width="100%" alt="github stats" src="resource/title-stats.svg"></picture>
+<p align="center"><span class="ext"><span><b>GitHub stats</b>外部服务，预览页加载不了；README 里已换成新配色参数</span></span> <span class="ext"><span><b>Top languages</b>同上</span></span></p>
+<div class="ext wide"><span><b>Contribution graph</b>外部服务，已换成新配色参数</span></div>
+<picture><img width="100%" alt="my website" src="resource/title-site.svg"></picture>
+<a href="https://www.konataizumi.com/"><img width="100%" alt="杜撰录 · konataizumi.com" src="resource/site.svg"></a>
+<picture><img width="100%" alt="one more thing" src="resource/title-more.svg"></picture>
+<a href="https://www.buymeacoffee.com/shirumesu"><img width="100%" alt="感谢你能喜欢我的作品？ Buy me a coffee" src="resource/support.svg"></a>
+<picture><img width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg"></picture>
+      <div class="hot-layer" id="hot-layer" aria-hidden="true"></div>
+    </article>
+  </div>
+</div>
+
+<script>
+  const gh = document.getElementById('gh');
+  const md = document.getElementById('md');
+  const layer = document.getElementById('hot-layer');
+  const hot = document.getElementById('show-hot');
+  const btnL = document.getElementById('gh-light');
+  const btnD = document.getElementById('gh-dark');
+
+  function setGh(dark) {
+    gh.classList.toggle('gh-dark', dark);
+    btnD.setAttribute('aria-pressed', dark);
+    btnL.setAttribute('aria-pressed', !dark);
+  }
+  btnL.addEventListener('click', () => setGh(false));
+  btnD.addEventListener('click', () => setGh(true));
+  const root = document.documentElement.dataset.theme;
+  setGh(root ? root === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches);
+
+  function drawHot() {
+    md.classList.toggle('show-hot', hot.checked);
+    layer.replaceChildren();
+    if (!hot.checked) return;
+    const base = md.getBoundingClientRect();
+    md.querySelectorAll('a > img').forEach((img) => {
+      const r = img.getBoundingClientRect();
+      const tag = document.createElement('span');
+      tag.className = 'hot-label';
+      tag.textContent = '↗ ' + img.parentElement.href.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
+      tag.style.left = (r.left - base.left + 3) + 'px';
+      tag.style.top = (r.top - base.top + 3) + 'px';
+      tag.style.maxWidth = (r.width - 8) + 'px';
+      layer.appendChild(tag);
+    });
+  }
+  hot.addEventListener('change', drawHot);
+  addEventListener('resize', drawHot);
+  md.querySelectorAll('img').forEach((img) => img.complete || img.addEventListener('load', drawHot));
+  drawHot();
+</script>
