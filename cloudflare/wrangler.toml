@@ -1,0 +1,10 @@
+# Deploy: cd cloudflare && npx wrangler deploy
+name = "gitprofile"
+main = "worker.js"
+compatibility_date = "2026-04-17"
+workers_dev = true
+
+# Holds the visitor count (key: github-profile-visits). Keep this id or the count resets.
+[[kv_namespaces]]
+binding = "VISITOR_COUNTER"
+id = "a7c7349fc5ee42efaebe6d886565cf5a"
