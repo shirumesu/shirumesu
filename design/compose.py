@@ -150,30 +150,12 @@ def label(x, y, txt, fill=SEA, anchor=None):
 _clip_n = 0
 
 
-def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None):
-    """Phrase that is 'written in' left→right (or top→bottom). Falls back to fully visible without SMIL."""
-    global _clip_n
-    _clip_n += 1
-    cid = f"wr{_clip_n}"
-    if v:
-        n = len(txt)
-        W, H = s * 1.3, n * (s + ls) + 4
-        cx, cy = x - W / 2, y - 2
-        attr = "height"
-        full = H
-    else:
-        tw = width(txt, s, w, ls)
-        W, H = tw + 10, s * 1.45
-        cx = (x - tw / 2 if anchor == "middle" else x) - 4
-        cy = y - s * 1.08
-        attr = "width"
-        full = W
-    dur = delay + 0.25 + min(1.2, len(txt) * 0.05)
-    k = delay / dur
-    clip = (f'<clipPath id="{cid}"><rect x="{cx:.1f}" y="{cy:.1f}" width="{W:.1f}" height="{H:.1f}">'
-            f'<animate attributeName="{attr}" values="0;0;{full:.1f}" keyTimes="0;{k:.3f};1" dur="{dur:.2f}s" fill="freeze"/></rect></clipPath>')
+def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None, wobble=False):
+    """Phrase that pops in (fade + rise), like the original banner."""
     t = T(x, y, s, txt, fill, w, anchor, ls or None, op=op, v=v)
-    g = f'{clip}<g clip-path="url(#{cid})">{t}</g>'
+    if wobble:
+        t = f'<g class="wobble">{t}</g>'
+    g = f'<g class="pop" style="animation-delay:{delay:.2f}s">{t}</g>'
     return f'<g transform="rotate({rot})">{g}</g>' if rot else g
 
 
@@ -187,6 +169,16 @@ def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
             f'fill="{fill}" fill-opacity="{op}"/>{t}</g>')
 
 
+POP_CSS = """<style>
+    .pop { animation: pop .7s cubic-bezier(.2, .8, .3, 1.25) both; }
+    @keyframes pop { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .stamp { animation: stamp .5s cubic-bezier(.3, 1.5, .5, 1) both; transform-box: fill-box; transform-origin: center; }
+    @keyframes stamp { from { opacity: 0; transform: scale(1.5) rotate(4deg); } to { opacity: 1; transform: none; } }
+    .wobble { animation: wobble 3.2s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 90%; }
+    @keyframes wobble { from { transform: rotate(-8deg); } to { transform: rotate(-2deg); } }
+  </style>"""  # the original banner's phrase animations
+
+
 def banner():
     W, H = 880, 404
     p = [tile("pg", 8, 1, 864, 400, 10, glows=[("gSea", 120, 40, 320, "drift"), ("gSun", 790, 380, 300, "drift2")], dots=True, grain=True, hair=".12")]
@@ -197,7 +189,10 @@ def banner():
     p.append(f'<g transform="rotate(-90 36 372)">{T(36, 372, META, "SHIRUMESU’S NOTE", INK, op=".4", ls=4)}</g>')
     p.append(f'<rect x="300" y="-6" width="116" height="22" fill="{SEA}" fill-opacity=".14" transform="rotate(-3 358 5)"/>')
 
-    d = iter([i * 0.09 for i in range(40)])
+    import random
+    _delays = [round(0.10 + 0.06 * i, 2) for i in range(26)]
+    random.Random(7).shuffle(_delays)
+    d = iter(_delays)
     # row 1
     p.append(f'<path class="draw" style="animation-delay:.9s" d="M106 70 C 200 64 330 72 450 66 S 540 64 562 68" fill="none" stroke="{SEA}" stroke-width="2.2" stroke-linecap="round"/>')
     p.append(written(106, 58, 29, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=next(d)))
@@ -206,11 +201,11 @@ def banner():
     p.append(written(620, 92, 16, "晚安，Sion", INK, op=SOFT, delay=next(d)))
     p.append(written(104, 128, 18, "区区小司…", SEA, delay=next(d)))
     p.append(written(236, 118, 14, "我师傅的真实身份是…好人", INK, delay=next(d)))
-    p.append(written(456, 110, 17, "(=ω=.)", SEA, delay=next(d)))
+    p.append(written(456, 110, 17, "(=ω=.)", SEA, delay=next(d), wobble=True))
     p.append(f'<path class="draw" style="animation-delay:1.4s" d="M448 104 C 446 90 470 86 492 88 C 512 90 518 100 512 108 C 504 118 470 118 456 114 C 446 110 444 100 452 94" fill="none" stroke="{INK}" stroke-opacity=".35" stroke-width="1.2" stroke-linecap="round"/>')
     p.append(written(428, 144, 18, "アッシエント!", INK, rot="-2 480 138", delay=next(d)))
     # P5R: flat ink label
-    p.append(f'<g transform="rotate(-6 721 124)"><g class="fade" style="animation-delay:.5s"><rect x="606" y="96" width="230" height="56" fill="{INK}"/>'
+    p.append(f'<g transform="rotate(-6 721 124)"><g class="stamp" style="animation-delay:1.12s"><rect x="606" y="96" width="230" height="56" fill="{INK}"/>'
              + T(721, 137, 35, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
     p.append(written(222, 160, 21, "娶妻当如古河渚", INK, delay=next(d)))
     # 計画通り with marker
@@ -238,7 +233,7 @@ def banner():
     p.append(f'<path class="draw" style="animation-delay:2.6s" d="M318 382 Q 360 377 400 382 T 480 382 T 560 382 T 640 382 T 720 382 T 790 380" fill="none" stroke="{INK}" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>')
     # two tiny sun dots as the only ornament
     p.append(f'<circle class="blink" cx="548" cy="100" r="3" fill="{SUN}"/><circle class="blink" style="animation-delay:-1.6s" cx="842" cy="356" r="3" fill="{SUN}"/>')
-    svg("banner", W, H, f"shirumesu's notebook · last updated {LAST_UPDATED}", "\n  ".join(p))
+    svg("banner", W, H, f"shirumesu's notebook · last updated {LAST_UPDATED}", "\n  ".join(p), POP_CSS)
 
 
 # ------------------------------------------------------------------ titles
