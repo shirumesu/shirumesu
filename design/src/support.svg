@@ -49,6 +49,6 @@
   <text x="34" y="98" font-size="15" fill="#1F3A4A" fill-opacity=".86">一瓶波子汽水、一杯咖啡，都会变成下一个项目的燃料。</text>
   <rect x="616" y="36" width="230" height="48" rx="8" fill="#F4D35E"/>
   <rect x="617" y="37" width="228" height="46" rx="7" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
-  <text x="638" y="65" font-size="15" fill="#1F3A4A" data-w="m">Buy me a coffee</text>
-  <text x="826" y="65" font-size="15" fill="#1F3A4A" text-anchor="end">↗</text>
+  <text x="638" y="65" font-size="15" fill="#1F3A4B" data-w="m">Buy me a coffee</text>
+  <text x="826" y="65" font-size="15" fill="#1F3A4B" text-anchor="end">↗</text>
 </svg>

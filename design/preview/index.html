@@ -84,37 +84,35 @@
   <details class="notes" open>
     <summary>这次改了什么</summary>
     <ol>
-      <li><b>四个颜色，各管一件事</b>：墨色写字（次要文字用同色 60%），纸色做底，海蓝表示可以点、可以跟的东西（标签、链接、强调词），柠檬黄只用来强调（荧光笔、便签、主项目、按钮）。之前的橙、紫、珊瑚红都去掉了。</li>
-      <li><b>四个字号</b>：12 注释 · 15 正文 · 20 标题 · 32 展示。词云除外。</li>
-      <li><b>便当盒</b>：所有卡片对齐同一个三栏网格。格子越大越重要，从主项目一路缩到 MOD 小条。about 是一整张 bento，引言缩成 intro 卡角落里的一张小便签。my website 和 one more thing 重新分成两节。</li>
-      <li><b>词云</b>：去掉了阴影和立体感，改成方格手帐页。每句话按顺序“写”出来，再加荧光笔、便签、手绘圈和下划线。</li>
-      <li><b>分割标题</b>：文字居中，两侧对称排开：柠檬圆点、闪烁小星、小圆环、手绘波浪线，最后接虚线。</li>
-      <li><b>玻璃只用一点</b>：博客卡片上一块磨砂面板压在照片上，主项目卡里两片很淡的玻璃片。渐变都降到了几乎看不出来。</li>
+      <li><b>深色模式</b>：每张图都有一份单独的深色版本，README 通过 <code>&lt;picture&gt;</code> 跟随 GitHub 主题自动切换。用上方的「GitHub 深色」可以直接看效果。</li>
+      <li><b>深色怎么换的</b>：墨色和纸色互换，纸色变成深海夜色 <code>#0F1A20</code>。海蓝提亮到 <code>#6CC6DC</code>。白色高光改成暗玻璃色。荧光笔的黄降到约一半浓度，免得刺眼。</li>
+      <li><b>落在黄色上的字</b>：便签和按钮上的字两种模式都保持深色，深色模式下便签也更实一点，保证看得清。</li>
+      <li><b>访客计数器</b>：worker 支持 <code>?theme=dark</code>，README 在深色模式下请求这个地址。两个地址都会计数，但每次访问只会加载其中一个。</li>
     </ol>
   </details>
 
   <div class="gh" id="gh">
     <div class="gh-head">shirumesu / <span>README.md</span></div>
     <article class="md" id="md">
-<picture><img width="100%" alt="✿ あなたは …… 人目の訪問者です。 ✿" src="resource/visitor-preview.svg"></picture>
-<picture><img width="100%" alt="shirumesu's notebook · Last updated 2026-11-09" src="resource/banner.svg"></picture>
-<picture><img width="100%" alt="about me" src="resource/title-about.svg"></picture>
-<picture><img width="100%" alt="吾辈是希露梅斯，别看我这样子，其实我之前是个二次元.jpg。虽然从来没有认可过自己的技术……但姑且就认为是技术宅吧！毕竟去异世界这种事说不定也会发生哦。总而言之，我在做一些有趣的事，让我觉得开心的事，如果让你也觉得有趣就再好不过了。The truth shall make you free. —— John 8:32" src="resource/about.svg"></picture>
-<picture><img width="100%" alt="projects" src="resource/title-projects.svg"></picture>
+<picture><img data-dark="resource/visitor-preview-dark.svg" width="100%" alt="✿ あなたは …… 人目の訪問者です。 ✿" src="resource/visitor-preview.svg"></picture>
+<picture><img data-dark="resource/banner-dark.svg" width="100%" alt="shirumesu's notebook · Last updated 2026-11-09" src="resource/banner.svg"></picture>
+<picture><img data-dark="resource/title-about-dark.svg" width="100%" alt="about me" src="resource/title-about.svg"></picture>
+<picture><img data-dark="resource/about-dark.svg" width="100%" alt="吾辈是希露梅斯，别看我这样子，其实我之前是个二次元.jpg。虽然从来没有认可过自己的技术……但姑且就认为是技术宅吧！毕竟去异世界这种事说不定也会发生哦。总而言之，我在做一些有趣的事，让我觉得开心的事，如果让你也觉得有趣就再好不过了。The truth shall make you free. —— John 8:32" src="resource/about.svg"></picture>
+<picture><img data-dark="resource/title-projects-dark.svg" width="100%" alt="projects" src="resource/title-projects.svg"></picture>
 <p align="center">
-<a href="https://github.com/shirumesu/MelonBanG"><img width="66.6%" alt="MelonBanG — 得意之作！基于 Bangumi 的追番播放器" src="resource/proj-melonbang.svg"></a><a href="https://github.com/shirumesu/melon_libtorrent"><img width="33.3%" alt="melon_libtorrent — MelonBanG 的下载引擎" src="resource/proj-libtorrent.svg"></a><br>
-<a href="https://github.com/shirumesu/ui_bot"><img width="33.3%" alt="羽衣 bot" src="resource/proj-uibot.svg"></a><a href="https://github.com/shirumesu/Neopot"><img width="33.3%" alt="Neo-pot" src="resource/proj-neopot.svg"></a><a href="https://github.com/shirumesu/gei"><img width="33.3%" alt="芸" src="resource/proj-gei.svg"></a><br>
-<a href="https://github.com/shirumesu/GPTize"><img width="33.3%" alt="GPTize" src="resource/row-gptize.svg"></a><a href="https://github.com/shirumesu/respond-like-human"><img width="33.3%" alt="Respond-like-human" src="resource/row-respond.svg"></a><a href="https://github.com/shirumesu/Anti-Anime-License"><img width="33.3%" alt="反二次元许可证" src="resource/row-antianime.svg"></a><br>
-<a href="https://github.com/shirumesu/ShareTheSpire2"><img width="49.95%" alt="ShareTheSpire2" src="resource/row-sharespire.svg"></a><a href="https://github.com/shirumesu/Shop-Enhancement-STS2"><img width="49.95%" alt="Shop-Enhancement-STS2" src="resource/row-shopsts2.svg"></a>
+<a href="https://github.com/shirumesu/MelonBanG"><picture><img data-dark="resource/proj-melonbang-dark.svg" width="66.6%" alt="MelonBanG — 得意之作！基于 Bangumi 的追番播放器" src="resource/proj-melonbang.svg"></picture></a><a href="https://github.com/shirumesu/melon_libtorrent"><picture><img data-dark="resource/proj-libtorrent-dark.svg" width="33.3%" alt="melon_libtorrent — MelonBanG 的下载引擎" src="resource/proj-libtorrent.svg"></picture></a><br>
+<a href="https://github.com/shirumesu/ui_bot"><picture><img data-dark="resource/proj-uibot-dark.svg" width="33.3%" alt="羽衣 bot" src="resource/proj-uibot.svg"></picture></a><a href="https://github.com/shirumesu/Neopot"><picture><img data-dark="resource/proj-neopot-dark.svg" width="33.3%" alt="Neo-pot" src="resource/proj-neopot.svg"></picture></a><a href="https://github.com/shirumesu/gei"><picture><img data-dark="resource/proj-gei-dark.svg" width="33.3%" alt="芸" src="resource/proj-gei.svg"></picture></a><br>
+<a href="https://github.com/shirumesu/GPTize"><picture><img data-dark="resource/row-gptize-dark.svg" width="33.3%" alt="GPTize" src="resource/row-gptize.svg"></picture></a><a href="https://github.com/shirumesu/respond-like-human"><picture><img data-dark="resource/row-respond-dark.svg" width="33.3%" alt="Respond-like-human" src="resource/row-respond.svg"></picture></a><a href="https://github.com/shirumesu/Anti-Anime-License"><picture><img data-dark="resource/row-antianime-dark.svg" width="33.3%" alt="反二次元许可证" src="resource/row-antianime.svg"></picture></a><br>
+<a href="https://github.com/shirumesu/ShareTheSpire2"><picture><img data-dark="resource/row-sharespire-dark.svg" width="49.95%" alt="ShareTheSpire2" src="resource/row-sharespire.svg"></picture></a><a href="https://github.com/shirumesu/Shop-Enhancement-STS2"><picture><img data-dark="resource/row-shopsts2-dark.svg" width="49.95%" alt="Shop-Enhancement-STS2" src="resource/row-shopsts2.svg"></picture></a>
 </p>
-<picture><img width="100%" alt="github stats" src="resource/title-stats.svg"></picture>
-<p align="center"><span class="ext"><span><b>GitHub stats</b>外部服务，预览页加载不了；README 里已换成新配色参数</span></span> <span class="ext"><span><b>Top languages</b>同上</span></span></p>
-<div class="ext wide"><span><b>Contribution graph</b>外部服务，已换成新配色参数</span></div>
-<picture><img width="100%" alt="my website" src="resource/title-site.svg"></picture>
-<a href="https://www.konataizumi.com/"><img width="100%" alt="杜撰录 · konataizumi.com" src="resource/site.svg"></a>
-<picture><img width="100%" alt="one more thing" src="resource/title-more.svg"></picture>
-<a href="https://www.buymeacoffee.com/shirumesu"><img width="100%" alt="感谢你能喜欢我的作品？ Buy me a coffee" src="resource/support.svg"></a>
-<picture><img width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg"></picture>
+<picture><img data-dark="resource/title-stats-dark.svg" width="100%" alt="github stats" src="resource/title-stats.svg"></picture>
+<p align="center"><span class="ext"><span><b>GitHub stats</b>外部服务，预览页加载不了；README 里已配好浅色和深色参数</span></span> <span class="ext"><span><b>Top languages</b>同上</span></span></p>
+<div class="ext wide"><span><b>Contribution graph</b>外部服务，浅色和深色参数都已配好</span></div>
+<picture><img data-dark="resource/title-site-dark.svg" width="100%" alt="my website" src="resource/title-site.svg"></picture>
+<a href="https://www.konataizumi.com/"><picture><img data-dark="resource/site-dark.svg" width="100%" alt="杜撰录 · konataizumi.com" src="resource/site.svg"></picture></a>
+<picture><img data-dark="resource/title-more-dark.svg" width="100%" alt="one more thing" src="resource/title-more.svg"></picture>
+<a href="https://www.buymeacoffee.com/shirumesu"><picture><img data-dark="resource/support-dark.svg" width="100%" alt="感谢你能喜欢我的作品？ Buy me a coffee" src="resource/support.svg"></picture></a>
+<picture><img data-dark="resource/footer-dark.svg" width="100%" alt="© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu" src="resource/footer.svg"></picture>
       <div class="hot-layer" id="hot-layer" aria-hidden="true"></div>
     </article>
   </div>
@@ -128,8 +126,10 @@
   const btnL = document.getElementById('gh-light');
   const btnD = document.getElementById('gh-dark');
 
+  md.querySelectorAll('img[data-dark]').forEach((img) => { img.dataset.light = img.getAttribute('src'); });
   function setGh(dark) {
     gh.classList.toggle('gh-dark', dark);
+    md.querySelectorAll('img[data-dark]').forEach((img) => { img.src = dark ? img.dataset.dark : img.dataset.light; });
     btnD.setAttribute('aria-pressed', dark);
     btnL.setAttribute('aria-pressed', !dark);
   }

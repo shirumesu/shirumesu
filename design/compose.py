@@ -25,6 +25,22 @@ import build  # noqa: E402
 SRC = pathlib.Path(__file__).resolve().parent / "src"
 
 INK, PAPER, SEA, SUN = "#1F3A4A", "#FAFCFB", "#177F98", "#F4D35E"
+ON_SUN = "#1F3A4B"  # text sitting on SUN: stays dark in both themes
+DARK = False
+
+# Dark variants are a token swap of the finished light SVG (written as <name>-dark.svg).
+# Ink and paper trade places, sea lifts to a lighter cyan, white highlights become a dim
+# glass tone, and SUN keeps its hue but drops its highlighter strength.
+DARK_MAP = [
+    ("#1F3A4A", "#DCE8EC"),   # ink   -> light ink
+    ("#FAFCFB", "#0F1A20"),   # paper -> deep sea-night
+    ("#177F98", "#6CC6DC"),   # sea   -> lighter sea
+    ("#FFFFFF", "#3A4C55"),   # rims / glass / tape highlights
+    ('stop-color="#F4D35E" stop-opacity=".75"', 'stop-color="#F4D35E" stop-opacity=".34"'),
+    ('stop-color="#F4D35E" stop-opacity=".6"', 'stop-color="#F4D35E" stop-opacity=".26"'),
+    ('stop-color="#F4D35E" stop-opacity=".2"', 'stop-color="#F4D35E" stop-opacity=".1"'),
+    ('values="0 0 0 0 .12  0 0 0 0 .23  0 0 0 0 .29  .12 0 0 0 -.035"', 'values="0 0 0 0 .86  0 0 0 0 .92  0 0 0 0 .95  .09 0 0 0 -.025"'),
+]
 META, BODY, HEAD, DISP = 12, 15, 20, 32
 SOFT = ".62"  # secondary text opacity
 LAST_UPDATED = "2026.11.09 Mon."
@@ -75,6 +91,10 @@ def svg(name, w, h, label, body, extra_defs=""):
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{html.escape(label)}">\n'
         f"  {STYLE}\n  {DEFS.replace('{extra}', extra_defs)}\n  {body}\n</svg>\n"
     )
+    if DARK:
+        for a, b in DARK_MAP:
+            out = out.replace(a, b)
+        name += "-dark"
     (SRC / f"{name}.svg").write_text(out)
 
 
@@ -159,6 +179,8 @@ def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, ro
 
 def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
     """Flat sticky note / index tab."""
+    if DARK:
+        op = ".88"
     t = (f'<rect x="{x + w / 2 - 22}" y="{y - 7}" width="44" height="14" fill="{PAPER}" fill-opacity=".85" '
          f'stroke="{INK}" stroke-opacity=".08"/>') if tape else ""
     return (f'<g transform="rotate({rot} {x + w / 2} {y + h / 2})"><rect x="{x}" y="{y}" width="{w}" height="{h}" '
@@ -211,7 +233,7 @@ def banner():
     p.append(written(390, 334, 21, "友情・努力・勝利", INK, "m", ls=1, delay=next(d)))
     # 放課後 on a sticky note
     p.append(note(618, 304, 188, 38, 2))
-    p.append(f'<g transform="rotate(2 712 323)">{written(712, 330, 19, "放課後ティータイム", INK, anchor="middle", delay=next(d))}</g>')
+    p.append(f'<g transform="rotate(2 712 323)">{written(712, 330, 19, "放課後ティータイム", ON_SUN, anchor="middle", delay=next(d))}</g>')
     p.append(written(322, 370, 29, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=next(d)))
     p.append(f'<path class="draw" style="animation-delay:2.6s" d="M318 382 Q 360 377 400 382 T 480 382 T 560 382 T 640 382 T 720 382 T 790 380" fill="none" stroke="{INK}" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>')
     # two tiny sun dots as the only ornament
@@ -261,8 +283,8 @@ def about():
         p.append(T(34, y, BODY, line, INK, maxw=520, op=".86"))
     # the quote: a small sticky note tucked in the corner
     p.append(note(418, 180, 142, 62, 3, op=".55"))
-    p.append(f'<g transform="rotate(3 489 211)">{T(430, 205, META, "The truth shall make", INK, "m")}{T(430, 221, META, "you free.", INK, "m")}'
-             f'{T(548, 236, META, "John 8:32", INK, op=SOFT, anchor="end")}</g>')
+    p.append(f'<g transform="rotate(3 489 211)">{T(430, 205, META, "The truth shall make", ON_SUN, "m")}{T(430, 221, META, "you free.", ON_SUN, "m")}'
+             f'{T(548, 236, META, "John 8:32", ON_SUN, op=SOFT, anchor="end")}</g>')
     # gif, full bleed
     p.append(f'<g clip-path="url(#ph)"><image href="@img/konata.gif" x="595" y="1" width="277" height="402" preserveAspectRatio="xMidYMid slice"/><rect x="595" y="1" width="277" height="402" fill="url(#phFade)"/></g>')
     p.append(f'<rect x="595.5" y="1.5" width="276" height="401" rx="7.5" fill="none" stroke="{INK}" stroke-opacity=".1"/>')
@@ -402,8 +424,8 @@ def support():
     p.append(T(34, 98, BODY, "一瓶波子汽水、一杯咖啡，都会变成下一个项目的燃料。", INK, op=".86"))
     p.append(f'<rect x="616" y="36" width="230" height="48" rx="8" fill="{SUN}"/>')
     p.append(f'<rect x="617" y="37" width="228" height="46" rx="7" fill="none" stroke="url(#rim)" stroke-width="1.2"/>')
-    p.append(T(638, 65, BODY, "Buy me a coffee", INK, "m"))
-    p.append(T(826, 65, BODY, "↗", INK, anchor="end"))
+    p.append(T(638, 65, BODY, "Buy me a coffee", ON_SUN, "m"))
+    p.append(T(826, 65, BODY, "↗", ON_SUN, anchor="end"))
     svg("support", 880, 120, "感谢你能喜欢我的作品？ Buy me a coffee", "\n  ".join(p))
 
 
@@ -422,5 +444,7 @@ def footer():
 if __name__ == "__main__":
     for f in SRC.glob("*.svg"):
         f.unlink()
-    banner(); titles(); about(); projects(); site(); support(); footer()
+    for DARK in (False, True):
+        _clip_n = 0
+        banner(); titles(); about(); projects(); site(); support(); footer()
     print("\n".join(sorted(f.name for f in SRC.glob("*.svg"))))

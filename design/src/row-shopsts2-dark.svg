@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="84" viewBox="0 0 440 84" role="img" aria-label="Shop-Enhancement-STS2 — 杀戮尖塔 2 商店体验增强模组">
+  <style>
+    .drift { animation: drift 22s ease-in-out infinite; }
+    .drift2 { animation: drift2 28s ease-in-out infinite; }
+    @keyframes drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(36px, 14px); } }
+    @keyframes drift2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-40px, -10px); } }
+    .sweep { animation: sweep .9s cubic-bezier(.3, .7, .2, 1) both; transform-box: fill-box; transform-origin: left center; }
+    @keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .draw { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: draw 1.4s ease-out forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .flow { stroke-dasharray: 4 6; animation: flow 1.4s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -20; } }
+    .fade { animation: fade .8s ease-out both; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .blink { animation: blink 3.2s ease-in-out infinite; }
+    .twinkle { animation: twinkle 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes twinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(.5); } }
+    @keyframes blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6CC6DC" stop-opacity=".045"/><stop offset=".6" stop-color="#6CC6DC" stop-opacity="0"/><stop offset="1" stop-color="#F4D35E" stop-opacity=".07"/>
+    </linearGradient>
+    <radialGradient id="gSea"><stop offset="0" stop-color="#6CC6DC" stop-opacity=".11"/><stop offset="1" stop-color="#6CC6DC" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gSun"><stop offset="0" stop-color="#F4D35E" stop-opacity=".1"/><stop offset="1" stop-color="#F4D35E" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A4C55"/><stop offset=".18" stop-color="#3A4C55" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="marker" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F4D35E" stop-opacity=".34"/><stop offset=".9" stop-color="#F4D35E" stop-opacity=".26"/><stop offset="1" stop-color="#F4D35E" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r=".9" fill="#DCE8EC" fill-opacity=".14"/></pattern>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .86  0 0 0 0 .92  0 0 0 0 .95  .09 0 0 0 -.025"/>
+    </filter>
+    
+  </defs>
+  <clipPath id="tmo"><rect x="8" y="4" width="424" height="76" rx="8"/></clipPath>
+  <g clip-path="url(#tmo)">
+    <rect x="8" y="4" width="424" height="76" fill="#0F1A20"/><rect x="8" y="4" width="424" height="76" fill="url(#wash)"/>
+    
+  </g>
+  <rect x="8.5" y="4.5" width="423" height="75" rx="7.5" fill="none" stroke="#DCE8EC" stroke-opacity=".1"/>
+  <rect x="9.5" y="5.5" width="421" height="73" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
+  <text x="31" y="37" font-size="12" fill="#DCE8EC" letter-spacing="2" fill-opacity=".62">MOD · 非原创</text>
+  <text x="31" y="64" font-size="15" fill="#DCE8EC" data-w="m" data-maxw="200">Shop-Enhancement-STS2</text>
+  <text x="408" y="64" font-size="12" fill="#DCE8EC" text-anchor="end" data-maxw="180" fill-opacity=".62">杀戮尖塔 2 商店体验增强模组</text>
+  <text x="408" y="37" font-size="12" fill="#6CC6DC" text-anchor="end">↗</text>
+</svg>
