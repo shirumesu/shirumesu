@@ -280,8 +280,8 @@ def about():
     p.append(note(418, 180, 142, 62, 3, op=".55"))
     p.append(f'<g transform="rotate(3 489 211)">{T(430, 205, META, "The truth shall make", ON_SUN, "m")}{T(430, 221, META, "you free.", ON_SUN, "m")}'
              f'{T(548, 236, META, "John 8:32", ON_SUN, op=SOFT, anchor="end")}</g>')
-    # gif, full bleed
-    p.append(f'<g clip-path="url(#ph)"><image href="@img/konata.gif" x="595" y="1" width="277" height="402" preserveAspectRatio="xMidYMid slice"/><rect x="595" y="1" width="277" height="402" fill="url(#phFade)"/></g>')
+    # animated photo (konata.webp, pre-cropped to this slice), full bleed
+    p.append(f'<g clip-path="url(#ph)"><image href="@img/konata.webp" x="595" y="1" width="277" height="402" preserveAspectRatio="xMidYMid slice"/><rect x="595" y="1" width="277" height="402" fill="url(#phFade)"/></g>')
     p.append(f'<rect x="595.5" y="1.5" width="276" height="401" rx="7.5" fill="none" stroke="{INK}" stroke-opacity=".1"/>')
     p.append('<rect x="596.5" y="2.5" width="274" height="399" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>')
     # stack, one line
@@ -346,7 +346,7 @@ def projects():
     gei = T(24, 33, HEAD, "芸", SEA, "m", "middle")
     mids = [
         ("uibot", "羽衣 bot", f'<g transform="translate(28 24)">{feather}</g>', "基于 Nonebot 的 QQ 机器人", "搜图、订阅、彩云续写……", "Python", 0),
-        ("neopot", "Neo-pot", '<image href="@img/neopot-icon.png" x="28" y="26" width="44" height="44"/>', "pot-desktop 的现代化重构", "划词翻译 + OCR，跨平台", "TypeScript", 1),
+        ("neopot", "Neo-pot", '<image href="@img/neopot-icon.webp" x="28" y="26" width="44" height="44"/>', "pot-desktop 的现代化重构", "划词翻译 + OCR，跨平台", "TypeScript", 1),
         ("gei", "芸", f'<g transform="translate(28 26)"><rect width="44" height="44" rx="8" fill="{SEA}" fill-opacity=".08" stroke="{SEA}" stroke-opacity=".3"/><g transform="translate(-2 4)">{gei}</g></g>', "一套 Skill，开箱即用", "涵盖所有使用场景", "AI · Skills", 2),
     ]
     h2 = 212
@@ -392,8 +392,9 @@ def site():
           '<clipPath id="gl"><rect x="572" y="20" width="280" height="260" rx="10"/></clipPath>'
           '<filter id="frost" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="14"/></filter>'
           '<clipPath id="av"><circle cx="616" cy="76" r="22"/></clipPath>'
-          f'<linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset=".45" stop-color="{PAPER}" stop-opacity="0"/><stop offset="1" stop-color="{PAPER}" stop-opacity=".5"/></linearGradient>')
-    img = '<image href="@img/site-photo.jpg" x="8" y="-60" width="864" height="486" preserveAspectRatio="xMidYMid slice"/>'
+          f'<linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset=".45" stop-color="{PAPER}" stop-opacity="0"/><stop offset="1" stop-color="{PAPER}" stop-opacity=".5"/></linearGradient>'
+          '<image id="photo" href="@img/site-photo.jpg" x="8" y="-60" width="864" height="486" preserveAspectRatio="xMidYMid slice"/>')
+    img = '<use href="#photo"/>'  # drawn twice (sharp + frosted); inlined once
     p = [f'<g clip-path="url(#pc)">{img}<rect x="8" y="1" width="864" height="298" fill="url(#side)"/>'
          f'<g clip-path="url(#gl)"><g filter="url(#frost)">{img}</g>'
          f'<rect x="572" y="20" width="280" height="260" fill="#FFFFFF" fill-opacity=".64"/></g></g>']
@@ -432,7 +433,7 @@ def footer():
     p.append(T(34, 138, BODY, "@shirumesu", SEA, "m"))
     p.append(f'<path class="draw" d="M32 145 C 56 142 96 146 132 143" fill="none" stroke="{SEA}" stroke-width="1.4" stroke-linecap="round"/>')
     p.append(f'<line x1="700" y1="22" x2="700" y2="130" stroke="{INK}" stroke-opacity=".12" stroke-dasharray="3 4"/>')
-    p.append('<image href="@img/sos-logo.png" x="742" y="16" width="96" height="119"/>')
+    p.append('<image href="@img/sos-logo.webp" x="742" y="16" width="96" height="119"/>')
     svg("footer", 880, 152, "© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu", "\n  ".join(p))
 
 

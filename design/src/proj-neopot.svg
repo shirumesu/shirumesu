@@ -44,7 +44,7 @@
   </g>
   <rect x="8.5" y="4.5" width="276" height="203" rx="7.5" fill="none" stroke="#1F3A4A" stroke-opacity=".1"/>
   <rect x="9.5" y="5.5" width="274" height="201" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
-  <image href="@img/neopot-icon.png" x="35" y="26" width="44" height="44"/>
+  <image href="@img/neopot-icon.webp" x="35" y="26" width="44" height="44"/>
   <text x="35" y="100" font-size="20" fill="#1F3A4A" data-w="m">Neo-pot</text>
   <text x="35" y="134" font-size="15" fill="#1F3A4A" data-maxw="234" fill-opacity=".86">pot-desktop 的现代化重构</text>
   <text x="35" y="158" font-size="15" fill="#1F3A4A" data-maxw="234" fill-opacity=".86">划词翻译 + OCR，跨平台</text>

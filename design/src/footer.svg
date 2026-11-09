@@ -50,5 +50,5 @@
   <text x="34" y="138" font-size="15" fill="#177F98" data-w="m">@shirumesu</text>
   <path class="draw" d="M32 145 C 56 142 96 146 132 143" fill="none" stroke="#177F98" stroke-width="1.4" stroke-linecap="round"/>
   <line x1="700" y1="22" x2="700" y2="130" stroke="#1F3A4A" stroke-opacity=".12" stroke-dasharray="3 4"/>
-  <image href="@img/sos-logo.png" x="742" y="16" width="96" height="119"/>
+  <image href="@img/sos-logo.webp" x="742" y="16" width="96" height="119"/>
 </svg>
