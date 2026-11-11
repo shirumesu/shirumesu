@@ -252,7 +252,7 @@ def badge(img, cx, cy, r, delay, cid):
 def jump_motto(x, y, delay):
     """友情・努力・勝利 — Weekly Shōnen Jump's three principles, set as the wall's motto rather
     than a quote: the three words stamp in one beat apart, then a skewed sun slash sweeps behind
-    them and manga speed lines fire off the end."""
+    them."""
     s, ls = 22, 1
     words = ["友情・", "努力・", "勝利"]
     total = width("".join(words), s, "m", ls)
@@ -262,8 +262,6 @@ def jump_motto(x, y, delay):
     for i, wd in enumerate(words):
         out.append(f'<g class="stamp" style="animation-delay:{delay + .14 * i:.2f}s">{T(cx, y, s, wd, INK, "m", ls=ls)}</g>')
         cx += width(wd, s, "m", ls) + ls
-    r, m = x + total + 14, y - 8
-    out.append(doodle(f"M{r} {m - 8} l 14 -4 M{r + 2} {m} h 20 M{r} {m + 8} l 14 4", delay + .6, INK, ".5", 1.6, 30))
     return "".join(out)
 
 
@@ -311,9 +309,9 @@ def banner():
     p.append(written(248, 340, 16, "请别忘记，这最棒的一年", SEA, delay=next(seq)))
     p.append(written(428, 320, 12.5, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(seq)))
     p.append(jump_motto(250, 390, delay=next(seq)))
-    p.append(written(478, 380, 22, "欢迎回来，京阿尼", INK, "x", delay=next(seq)))
+    p.append(written(478, 372, 22, "欢迎回来，京阿尼", INK, "x", delay=next(seq)))
     p.append(written(286, 430, 16, "明天，美食广场见", INK, op=".86", delay=next(seq)))
-    p.append(written(332, 462, 15, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
+    p.append(written(222, 458, 15, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
 
     # props
     p.append(f'<g transform="rotate(-6 730 92)"><g class="stamp" style="animation-delay:2.4s"><rect x="626" y="64" width="216" height="54" fill="{INK}"/>'
@@ -321,11 +319,11 @@ def banner():
     p.append(f'<g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="624" y="134" width="196" height="32" fill="{PAPER}" fill-opacity=".92"/>'
              f'<rect x="624" y="134" width="196" height="32" fill="{SEA}" fill-opacity=".16"/>'
              + T(722, 156, 17, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
-    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(624, 332, 178, 36, 3, op=".9")}'
-             f'<g transform="rotate(3 713 350)">{T(713, 356, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
-    card = (f'<rect x="490" y="454" width="224" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
-            + T(602, 480, 15, "本喵明明什么坏事都没干喵！", INK, "x", anchor="middle") + pin(602, 459))
-    p.append(f'<g transform="rotate(-3 602 459)"><g class="drop" style="animation-delay:2.75s"><g class="swing">{card}</g></g></g>')
+    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(664, 330, 178, 36, 3, op=".9")}'
+             f'<g transform="rotate(3 753 348)">{T(753, 354, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
+    card = (f'<rect x="516" y="460" width="212" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
+            + T(622, 486, 15, "本喵明明什么坏事都没干喵！", INK, "x", anchor="middle") + pin(622, 465))
+    p.append(f'<g transform="rotate(-3 622 465)"><g class="drop" style="animation-delay:2.75s"><g class="swing">{card}</g></g></g>')
     # badges next to the line they belong to
     p.append(badge("badge-light.webp", 484, 196, 30, 2.2, "bl"))
     p.append(badge("badge-nagisa.webp", 534, 238, 24, 2.3, "bn"))
@@ -336,11 +334,11 @@ def banner():
     p.append(doodle("M514 104 C 512 90 536 86 558 88 C 578 90 584 100 578 108 C 570 118 536 118 522 114 C 512 110 510 100 518 94", 2.0, INK, ".35", 1.2, 200))
     p.append(doodle("M248 348 C 310 345 370 349 412 345", 2.3, SEA, ".5", 1.4, 200))
     p.append(doodle("M34 232 C 28 242 34 252 52 254 M46 248 52 254 45 259", 2.9, INK, ".35", 1.2, 80))
-    p.append(doodle("M474 390 C 540 386 600 391 648 387", 2.4, SUN, "1", 3.2, 220))
+    p.append(doodle("M474 382 C 540 378 600 383 648 379", 2.4, SUN, "1", 3.2, 220))
     p.append(doodle("M700 384 l -2 -12 M712 388 l 8 -10 M721 396 l 12 -4", 2.2, SUN, "1", 2.4, 40))  # burst at 神
     # red pen, circled twice, like marking the answer in a notebook
-    p.append(doodle("M712 410 C 714 388 650 392 590 393 C 520 394 466 398 464 418 C 462 440 530 446 596 445 C 660 444 716 438 714 416 C 713 404 700 398 684 396", 2.5, "#E5484D", ".9", 1.8, 760))
-    p.append(doodle("M470 404 C 490 388 560 390 610 390 C 670 390 722 398 720 420 C 718 442 650 448 588 448 C 520 448 458 440 462 418", 2.9, "#E5484D", ".75", 1.4, 760))
+    p.append(doodle("M712 412 C 714 394 650 397 590 398 C 520 399 466 402 464 420 C 462 440 530 446 596 445 C 660 444 716 438 714 416 C 713 404 700 398 684 396", 2.5, "#E5484D", ".9", 1.8, 760))
+    p.append(doodle("M470 406 C 490 394 560 395 610 395 C 670 395 722 401 720 420 C 718 442 650 448 588 448 C 520 448 458 440 462 418", 2.9, "#E5484D", ".75", 1.4, 760))
     p.append(doodle("M36 526 Q 76 521 116 526 T 196 526 T 276 526 T 356 526 T 436 526 T 494 524", 2.7, INK, ".28", 1.6, 520))
 
     # two quiet pockets above the bottom line get small notebook clutter so the eye doesn't funnel
@@ -351,11 +349,7 @@ def banner():
              + T(51, 429, META, "早睡", INK, op=SOFT) + "</g>")
     p.append(doodle("M37 406 l 3 3 l 6 -8", 2.8, SEA, "1", 1.6, 20))
     p.append(written(34, 458, 12, "(｀・ω・´)ゞ", INK, op=SOFT, delay=2.65))
-    cat = ("M228 452 c 0 -10 6 -16 16 -16 s 16 6 16 16 c 0 8 -7 12 -16 12 s -16 -4 -16 -12 z "
-           "M231 442 l -2 -11 l 9 6 M257 442 l 2 -11 l -9 6 M238 450 v 1 M250 450 v 1 M240 455 q 2 2 4 0 q 2 2 4 0")
-    p.append(doodle(cat, 2.7, INK, ".42", 1.3, 200))
     p.append(f'<g transform="translate(274 424)"><path class="twinkle" style="animation-delay:-.9s" d="M0-5 1.1-1.1 5 0 1.1 1.1 0 5-1.1 1.1-5 0-1.1-1.1Z" fill="{SEA}" fill-opacity=".6"/></g>')
-    p.append(written(266, 474, 13, "zzz…", SEA, op=".7", delay=2.75))
 
     # the answer to 吾且问 is handwritten in last
     p.append(scribbled("ans", 58, 258, 20, "否，吾乃天——壶中之天", SEA, "x", begin=3.0, dur=1.3))
@@ -432,8 +426,8 @@ TH = 4  # baked top/bottom half-gap; GitHub adds ~7px of line gap between rows
 def projects():
     # row 1: hero 2/3 + package 1/3
     w1, h1 = 587, 300
-    # the app itself, as a window tilted into the card and running off its right edge
-    wx, wy, ww = 360, 34, 300
+    # the app itself, as a window tilted into the card
+    wx, wy, ww = 338, 40, 212
     wh = ww * 404 / 640 + 16
     win = (f'<rect x="{wx + 4}" y="{wy + 6}" width="{ww}" height="{wh:.0f}" rx="10" fill="{INK}" fill-opacity=".1"/>'
            f'<clipPath id="win"><rect x="{wx}" y="{wy}" width="{ww}" height="{wh:.0f}" rx="10"/></clipPath>'
