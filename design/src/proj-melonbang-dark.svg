@@ -40,7 +40,7 @@
   <clipPath id="th"><rect x="8" y="4" width="571" height="292" rx="8"/></clipPath>
   <g clip-path="url(#th)">
     <rect x="8" y="4" width="571" height="292" fill="#0F1A20"/><rect x="8" y="4" width="571" height="292" fill="url(#wash)"/>
-    <g class="drift2"><circle cx="470" cy="70" r="150" fill="url(#gSea)"/></g><rect x="330" y="-30" width="210" height="190" rx="14" fill="#3A4C55" fill-opacity=".38" stroke="#3A4C55" stroke-opacity=".9" transform="rotate(14 435 65)"/><rect x="402" y="26" width="160" height="150" rx="12" fill="#3A4C55" fill-opacity=".3" stroke="#6CC6DC" stroke-opacity=".12" transform="rotate(-8 482 101)"/>
+    <g class="drift2"><circle cx="470" cy="70" r="170" fill="url(#gSea)"/></g><g transform="rotate(-4 510.0 137)"><g class="pop" style="animation-delay:.3s"><rect x="364" y="40" width="300" height="205" rx="10" fill="#DCE8EC" fill-opacity=".1"/><clipPath id="win"><rect x="360" y="34" width="300" height="205" rx="10"/></clipPath><g clip-path="url(#win)"><rect x="360" y="34" width="300" height="16" fill="#0F1A20"/><image href="@img/melonbang-home-dark.webp" x="360" y="50" width="300" height="189.4"/></g><circle cx="371" cy="42" r="2.6" fill="#EA6A5A"/><circle cx="380" cy="42" r="2.6" fill="#F4D35E"/><circle cx="389" cy="42" r="2.6" fill="#6CC6DC" fill-opacity=".7"/><rect x="360.5" y="34.5" width="299" height="204" rx="9.5" fill="none" stroke="#DCE8EC" stroke-opacity=".16"/></g></g>
   </g>
   <rect x="8.5" y="4.5" width="570" height="291" rx="7.5" fill="none" stroke="#DCE8EC" stroke-opacity=".1"/>
   <rect x="9.5" y="5.5" width="568" height="289" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
