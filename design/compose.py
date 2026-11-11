@@ -147,11 +147,12 @@ def label(x, y, txt, fill=SEA, anchor=None):
 
 
 # ------------------------------------------------------------------ quote cloud
-# Choreography: the four big lines land first (they set the page's rhythm), the rest are
-# written in roughly in reading order, then the props arrive (stamp, notes, pin, doodles),
-# and last the 吾且问 question gets its answer handwritten in. After that only a handful of
-# slow loops stay alive: the pinned note swings, the sticky note sways, (=ω=.) wobbles, two
+# Choreography: the posters go up first, then the four big lines land, the rest are written
+# in roughly in reading order, then the props arrive (stamp, badges, notes, pin, doodles), and
+# last the 吾且问 question gets its answer handwritten in. After that only a handful of slow
+# loops stay alive: the pinned note swings, the sticky note sways, (=ω=.) wobbles, two
 # sparkles twinkle. Everything else stays still so the page reads cleanly.
+# The round handwriting ("x") is an accent for four lines only, not a second body face.
 
 
 def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None, wobble=False, cls="pop"):
@@ -174,12 +175,18 @@ def scribbled(mid, x, y, s, txt, fill=INK, w="r", op=None, ls=0, begin=0.0, dur=
     return m + f'<g mask="url(#{mid})">{T(x, y, s, txt, fill, w, anchor, ls or None, op=op)}</g>'
 
 
+def tape_strip(cx, cy, rot, w=58, h=16):
+    """Strip of washi tape, centred on (cx, cy). On the dark wall it is a pale translucent strip."""
+    fill, op = (INK, ".22") if DARK else (PAPER, ".8")
+    return (f'<rect x="{cx - w / 2}" y="{cy - h / 2}" width="{w}" height="{h}" fill="{fill}" fill-opacity="{op}" '
+            f'stroke="{INK}" stroke-opacity=".08" transform="rotate({rot} {cx} {cy})"/>')
+
+
 def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
     """Flat sticky note / index tab."""
     if DARK:
         op = ".88"
-    t = (f'<rect x="{x + w / 2 - 22}" y="{y - 7}" width="44" height="14" fill="{PAPER}" fill-opacity=".85" '
-         f'stroke="{INK}" stroke-opacity=".08"/>') if tape else ""
+    t = tape_strip(x + w / 2, y, 0, 44, 14) if tape else ""
     return (f'<g transform="rotate({rot} {x + w / 2} {y + h / 2})"><rect x="{x}" y="{y}" width="{w}" height="{h}" '
             f'fill="{fill}" fill-opacity="{op}"/>{t}</g>')
 
@@ -216,82 +223,109 @@ POP_CSS = """<style>
   </style>"""
 
 
+def poster(img, x, y, w, h, rot, delay):
+    """Printed key visual taped to the wall: paper border, hairline, a strip of tape on top."""
+    b = 4
+    cx, cy = x + w / 2, y + h / 2
+    body = (f'<rect x="{x + 2}" y="{y + 3}" width="{w}" height="{h}" fill="{INK}" fill-opacity=".08"/>'
+            f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{PAPER}" stroke="{INK}" stroke-opacity=".12"/>'
+            f'<image href="@img/{img}" x="{x + b}" y="{y + b}" width="{w - 2 * b}" height="{h - 2 * b}" preserveAspectRatio="xMidYMid slice"/>'
+            + tape_strip(cx, y + 2, -rot * 2))
+    return f'<g transform="rotate({rot} {cx} {cy})"><g class="drop" style="animation-delay:{delay}s">{body}</g></g>'
+
+
+def badge(img, cx, cy, r, delay, cid):
+    """Can badge (缶バッジ): round print, rim, a soft gloss and a shadow."""
+    return (f'<clipPath id="{cid}"><circle cx="{cx}" cy="{cy}" r="{r}"/></clipPath>'
+            f'<g class="stamp" style="animation-delay:{delay}s">'
+            f'<circle cx="{cx + 1.5}" cy="{cy + 2.5}" r="{r + 1}" fill="{INK}" fill-opacity=".16"/>'
+            f'<image href="@img/{img}" x="{cx - r}" y="{cy - r}" width="{2 * r}" height="{2 * r}" clip-path="url(#{cid})"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="{r - 1.2}" fill="none" stroke="#FFFFFF" stroke-width="2.4"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{INK}" stroke-opacity=".18"/>'
+            f'<path d="M{cx - r * .72} {cy - r * .1} A {r * .74} {r * .74} 0 0 1 {cx + r * .1} {cy - r * .72}" fill="none" stroke="white" stroke-opacity=".55" stroke-width="{r * .14:.1f}" stroke-linecap="round"/>'
+            f'</g>')
+
+
 def banner():
-    W, H = 880, 476
-    p = [tile("pg", 8, 1, 864, H - 2, 10, glows=[("gSea", 120, 40, 340, "drift"), ("gSun", 790, 440, 320, "drift2")], dots=True, grain=True, hair=".12")]
-    # journal header
+    """The collection wall: three posters and four badges break the grid; the quotes cluster
+    densely around 計画通り in the middle and thin out toward the edges."""
+    W, H = 880, 540
+    p = [tile("pg", 8, 1, 864, H - 2, 10, glows=[("gSea", 330, 200, 300, "drift"), ("gSun", 760, 500, 300, "drift2")], dots=True, grain=True, hair=".12")]
     p.append(f'<line x1="612" y1="44" x2="852" y2="44" stroke="{INK}" stroke-opacity=".18"/>')
     p.append(T(614, 38, META, "Last updated", INK, op=SOFT, ls=1))
     p.append(T(852, 38, BODY, LAST_UPDATED, INK, anchor="end"))
-    p.append(f'<rect x="300" y="-6" width="116" height="22" fill="{SEA}" fill-opacity=".14" transform="rotate(-3 358 5)"/>')
 
-    # wave 1 — the four anchors, landing on a diagonal
-    p.append(written(40, 64, 29, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=.1, cls="land"))
-    p.append(marker(40, 212, 250, 18, .75, -1))
-    p.append(written(44, 234, 48, "計画通り…", INK, "m", ls=1, delay=.3, cls="land"))
-    p.append(written(352, 270, 32, "山田尚子是神！", INK, "b", delay=.5, cls="land"))
-    p.append(written(236, 452, 29, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=.7, cls="land"))
+    # posters first: they are the wall
+    p.append(poster("poster-haruhi.webp", 26, 26, 108, 152, -4, .05))
+    p.append(poster("poster-steins.webp", 744, 156, 100, 150, 4, .2))
+    p.append(poster("poster-keion.webp", 742, 352, 104, 147, -3, .35))
 
-    # wave 2 — the rest, written in roughly reading order
-    seq = iter(round(1.0 + .075 * i, 3) for i in range(40))
-    # top band
-    p.append(written(76, 98, 12.5, "你能回到过去拯救那个没被 QB 欺骗的我吗", INK, op=SOFT, delay=next(seq)))
-    p.append(written(484, 62, 17, "(=ω=.)", SEA, delay=next(seq), wobble=True))
-    p.append(written(578, 26, 17, "一即是全，全即是一", SEA, ls=1, v=True, delay=next(seq)))
-    p.append(written(626, 82, 16, "晚安，Sion", INK, op=SOFT, delay=next(seq)))
-    p.append(written(40, 142, 18, "区区小司…", SEA, delay=next(seq)))
-    p.append(written(150, 134, 14, "我师傅的真实身份是…好人", INK, delay=next(seq)))
-    p.append(written(350, 126, 18, "アッシエント!", INK, rot="-3 407 120", delay=next(seq)))
-    p.append(written(370, 170, 21, "娶妻当如古河渚", INK, delay=next(seq)))
-    # middle band
-    p.append(written(316, 208, 15, "原来你真是美发师啊", SEA, delay=next(seq)))
-    p.append(written(620, 252, 23, "你这家伙在看我吧", INK, rot="-2 712 244", delay=next(seq)))
-    p.append(written(686, 286, 16, "秀吉的性别是秀吉啊!", SEA, delay=next(seq)))
-    # lower band
-    p.append(written(44, 296, 15, "吾且问，汝为人乎", INK, op=SOFT, ls=1, delay=next(seq)))
-    p.append(written(340, 312, 15, "请别忘记，这最棒的一年", SEA, delay=next(seq)))
-    p.append(written(548, 314, 13, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(seq)))
-    p.append(written(44, 360, 14, "立于浮华之世，奏响天籁之音", INK, op=SOFT, delay=next(seq)))
-    p.append(written(300, 368, 24, "欢迎回来，京阿尼", INK, "h", delay=next(seq)))
-    p.append(written(44, 396, 19, "为了我，成为炎拳吧", INK, delay=next(seq)))
-    p.append(written(440, 412, 21, "友情・努力・勝利", INK, "m", ls=1, delay=next(seq)))
-    p.append(written(250, 404, 17, "明天，美食广场见", INK, op=".86", delay=next(seq)))
-    p.append(written(44, 430, 15, "家庭教师是你真的太好了", SEA, delay=next(seq)))
-    p.append(written(44, 456, 14, "有木有WIFI?", INK, delay=next(seq)))
-    p.append(written(518, 370, 16, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
+    # wave 1 — anchors
+    p.append(written(152, 74, 30, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=.2, cls="land"))
+    p.append(marker(150, 182, 296, 20, .9, -1))
+    p.append(written(154, 206, 58, "計画通り…", INK, "m", ls=1, delay=.4, cls="land"))
+    p.append(written(40, 524, 30, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=.6, cls="land"))
+    p.append(written(476, 428, 34, "山田尚子是神！", INK, "x", delay=.75, cls="land"))
 
-    # wave 3 — props
-    p.append(f'<g transform="rotate(-6 727 124)"><g class="stamp" style="animation-delay:2.3s"><rect x="612" y="96" width="230" height="56" fill="{INK}"/>'
-             + T(727, 137, 35, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
-    p.append(f'<g transform="rotate(-3 735 192)"><g class="pop" style="animation-delay:2.45s"><rect x="626" y="174" width="218" height="34" fill="{SEA}" fill-opacity=".12"/>'
-             + T(735, 198, 18, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
-    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(660, 330, 188, 38, 2)}'
-             f'<g transform="rotate(2 754 349)">{T(754, 356, 19, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
-    # pinned card, swings from its pin
-    card = (f'<rect x="650" y="384" width="198" height="42" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
-            f'<rect x="650" y="384" width="198" height="42" rx="3" fill="url(#wash)"/>'
-            + T(658, 411, 14, "本喵明明什么坏事都没干喵！", INK) + pin(749, 389))
-    p.append(f'<g transform="rotate(3 749 389)"><g class="drop" style="animation-delay:2.8s"><g class="swing">{card}</g></g></g>')
+    seq = iter(round(1.0 + .07 * i, 3) for i in range(40))
+    # the dense core, around 計画通り
+    p.append(written(176, 100, 12, "你能回到过去拯救那个没被 QB 欺骗的我吗", INK, op=SOFT, delay=next(seq)))
+    p.append(written(158, 134, 18, "区区小司…", SEA, delay=next(seq)))
+    p.append(written(258, 130, 14, "我师傅的真实身份是…好人", INK, delay=next(seq)))
+    p.append(written(436, 148, 20, "アッシエント!", INK, rot="-5 494 140", delay=next(seq)))
+    p.append(written(520, 112, 17, "(=ω=.)", SEA, delay=next(seq), wobble=True))
+    p.append(written(188, 232, 14, "原来你真是美发师啊", SEA, delay=next(seq)))
+    p.append(written(336, 248, 24, "娶妻当如古河渚", INK, delay=next(seq)))
+    p.append(written(206, 300, 27, "你这家伙在看我吧", INK, rot="-3 318 290", delay=next(seq)))
+    p.append(written(446, 296, 17, "秀吉的性别是秀吉啊!", SEA, delay=next(seq)))
+    p.append(written(604, 56, 17, "一即是全，全即是一", SEA, ls=1, v=True, delay=next(seq)))
+    p.append(written(634, 214, 15, "晚安，Sion", INK, op=SOFT, delay=next(seq)))
+    # the left margin, looser
+    p.append(written(36, 226, 15, "吾且问，汝为人乎", INK, op=SOFT, ls=1, delay=next(seq)))
+    p.append(written(36, 322, 13, "立于浮华之世，奏响天籁之音", INK, op=SOFT, delay=next(seq)))
+    p.append(written(36, 350, 20, "为了我，成为炎拳吧", INK, delay=next(seq)))
+    p.append(written(36, 380, 15, "家庭教师是你真的太好了", SEA, delay=next(seq)))
+    p.append(written(36, 462, 14, "有木有WIFI?", INK, delay=next(seq)))
+    # the lower middle, around the K-ON corner
+    p.append(written(248, 340, 16, "请别忘记，这最棒的一年", SEA, delay=next(seq)))
+    p.append(written(428, 320, 12.5, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(seq)))
+    p.append(written(250, 390, 22, "友情・努力・勝利", INK, "m", ls=1, delay=next(seq)))
+    p.append(written(478, 380, 22, "欢迎回来，京阿尼", INK, "x", delay=next(seq)))
+    p.append(written(254, 430, 16, "明天，美食广场见", INK, op=".86", delay=next(seq)))
+    p.append(written(300, 462, 15, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
 
-    # doodles (pen + highlighter), drawn after the text they belong to
-    p.append(doodle("M40 76 C 140 70 280 79 380 72 S 452 70 462 74", .9, SEA, "1", 2.2, 460))
-    p.append(doodle("M478 54 C 476 40 500 36 522 38 C 542 40 548 50 542 58 C 534 68 500 68 486 64 C 476 60 474 50 482 44", 2.0, INK, ".35", 1.2, 200))
-    p.append(doodle("M546 150 c -4 -7 -12 -4 -10 2 c 2 5 10 9 10 9 c 0 0 8 -4 10 -9 c 2 -6 -6 -9 -10 -2", 2.1, SEA, ".7", 1.4, 80))  # heart
-    p.append(doodle("M500 234 l -5 -10 M518 228 l 0 -12 M536 234 l 6 -10", 2.2, SUN, "1", 2.4, 40))  # burst at 神
-    p.append(doodle("M340 320 C 400 317 460 321 504 317", 2.3, SEA, ".5", 1.4, 200))
-    p.append(doodle("M36 302 C 30 312 36 322 58 324 M52 318 58 324 51 329", 2.9, INK, ".35", 1.2, 80))  # question → answer arrow
-    p.append(doodle("M296 380 C 360 376 420 381 494 377", 2.4, SUN, "1", 3.2, 220))
-    p.append(doodle("M232 464 Q 272 459 312 464 T 392 464 T 472 464 T 552 464 T 632 464 T 692 462", 2.7, INK, ".28", 1.6, 520))
-    note_d = "M628 338 v -16 l 10 -3 v 16 M628 338 a 3.2 2.6 -20 1 1 -1 -.4 M638 335 a 3.2 2.6 -20 1 1 -1 -.4"  # ♪♪
-    p.append(doodle(note_d, 2.9, SEA, ".6", 1.4, 120))
+    # props
+    p.append(f'<g transform="rotate(-6 730 92)"><g class="stamp" style="animation-delay:2.4s"><rect x="618" y="64" width="224" height="54" fill="{INK}"/>'
+             + T(730, 104, 34, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
+    p.append(f'<g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="630" y="134" width="184" height="32" fill="{PAPER}" fill-opacity=".92"/>'
+             f'<rect x="630" y="134" width="184" height="32" fill="{SEA}" fill-opacity=".16"/>'
+             + T(722, 156, 17, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
+    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(624, 332, 178, 36, 3)}'
+             f'<g transform="rotate(3 713 350)">{T(713, 356, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
+    card = (f'<rect x="470" y="452" width="196" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
+            + T(568, 478, 15, "本喵明明什么坏事都没干喵！", INK, "x", anchor="middle") + pin(568, 457))
+    p.append(f'<g transform="rotate(-3 568 457)"><g class="drop" style="animation-delay:2.75s"><g class="swing">{card}</g></g></g>')
+    # badges next to the line they belong to
+    p.append(badge("badge-light.webp", 484, 196, 30, 2.2, "bl"))
+    p.append(badge("badge-nagisa.webp", 534, 238, 24, 2.3, "bn"))
+    p.append(badge("badge-hideyoshi.webp", 640, 268, 22, 2.4, "bh"))
+    p.append(badge("badge-qb.webp", 438, 98, 16, 2.1, "bq"))
+
+    # pen doodles
+    p.append(doodle("M152 86 C 250 80 400 89 500 82 S 568 80 578 84", 1.0, SEA, "1", 2.2, 460))
+    p.append(doodle("M514 104 C 512 90 536 86 558 88 C 578 90 584 100 578 108 C 570 118 536 118 522 114 C 512 110 510 100 518 94", 2.0, INK, ".35", 1.2, 200))
+    p.append(doodle("M248 348 C 310 345 370 349 412 345", 2.3, SEA, ".5", 1.4, 200))
+    p.append(doodle("M34 232 C 28 242 34 252 52 254 M46 248 52 254 45 259", 2.9, INK, ".35", 1.2, 80))
+    p.append(doodle("M474 390 C 540 386 600 391 648 387", 2.4, SUN, "1", 3.2, 220))
+    p.append(doodle("M690 412 l 6 -10 M704 418 l 12 -4 M682 404 l -1 -12", 2.2, SUN, "1", 2.4, 40))  # burst at 神
+    p.append(doodle("M36 534 Q 76 529 116 534 T 196 534 T 276 534 T 356 534 T 436 534 T 494 532", 2.7, INK, ".28", 1.6, 520))
 
     # the answer to 吾且问 is handwritten in last
-    p.append(scribbled("ans", 64, 326, 17, "否，吾乃天——壶中之天", SEA, "m", begin=3.0, dur=1.2))
+    p.append(scribbled("ans", 58, 258, 20, "否，吾乃天——壶中之天", SEA, "x", begin=3.0, dur=1.3))
 
-    # sparkles: the only ornaments that keep moving
     star = "M0-6 1.3-1.3 6 0 1.3 1.3 0 6-1.3 1.3-6 0-1.3-1.3Z"
-    p.append(f'<g transform="translate(560 112)"><path class="twinkle" d="{star}" fill="{SUN}"/></g>')
-    p.append(f'<g transform="translate(852 466)"><path class="twinkle" style="animation-delay:-1.8s" d="{star}" fill="{SEA}" fill-opacity=".7"/></g>')
+    p.append(f'<g transform="translate(150 186)"><path class="twinkle" d="{star}" fill="{SUN}"/></g>')
+    p.append(f'<g transform="translate(724 528)"><path class="twinkle" style="animation-delay:-1.8s" d="{star}" fill="{SEA}" fill-opacity=".7"/></g>')
     svg("banner", W, H, f"shirumesu's notebook · last updated {LAST_UPDATED}", "\n  ".join(p), POP_CSS)
 
 

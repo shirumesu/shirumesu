@@ -51,7 +51,7 @@
   <text x="34" y="160" font-size="15" fill="#1F3A4A" data-maxw="520" fill-opacity=".86">毕竟去异世界这种事说不定也会发生哦</text>
   <text x="34" y="198" font-size="15" fill="#1F3A4A" data-maxw="520" fill-opacity=".86">总而言之，我在做一些有趣的事，让我觉得开心的事</text>
   <text x="34" y="224" font-size="15" fill="#1F3A4A" data-maxw="520" fill-opacity=".86">如果让你也觉得有趣就再好不过了。</text>
-  <g transform="rotate(3 489.0 211.0)"><rect x="418" y="180" width="142" height="62" fill="#F4D35E" fill-opacity=".55"/><rect x="467.0" y="173" width="44" height="14" fill="#FAFCFB" fill-opacity=".85" stroke="#1F3A4A" stroke-opacity=".08"/></g>
+  <g transform="rotate(3 489.0 211.0)"><rect x="418" y="180" width="142" height="62" fill="#F4D35E" fill-opacity=".55"/><rect x="467.0" y="173.0" width="44" height="14" fill="#FAFCFB" fill-opacity=".8" stroke="#1F3A4A" stroke-opacity=".08" transform="rotate(0 489.0 180)"/></g>
   <g transform="rotate(3 489 211)"><text x="430" y="205" font-size="12" fill="#1F3A4B" data-w="m">The truth shall make</text><text x="430" y="221" font-size="12" fill="#1F3A4B" data-w="m">you free.</text><text x="548" y="236" font-size="12" fill="#1F3A4B" text-anchor="end" fill-opacity=".62">John 8:32</text></g>
   <g clip-path="url(#ph)"><image href="@img/konata.webp" x="595" y="1" width="277" height="402" preserveAspectRatio="xMidYMid slice"/><rect x="595" y="1" width="277" height="402" fill="url(#phFade)"/></g>
   <rect x="595.5" y="1.5" width="276" height="401" rx="7.5" fill="none" stroke="#1F3A4A" stroke-opacity=".1"/>
