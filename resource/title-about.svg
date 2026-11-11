@@ -16,7 +16,7 @@
     .twinkle { animation: twinkle 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
     @keyframes twinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(.5); } }
     @keyframes blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .draw, .ink { stroke-dashoffset: 0 !important; } }
   </style>
   <defs>
     <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">

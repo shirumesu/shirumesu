@@ -43,7 +43,7 @@ DARK_MAP = [
 ]
 META, BODY, HEAD, DISP = 12, 15, 20, 32
 SOFT = ".62"  # secondary text opacity
-LAST_UPDATED = "2026.11.09 Mon."
+LAST_UPDATED = "2026.11.11 Wed."
 
 STYLE = """<style>
     .drift { animation: drift 22s ease-in-out infinite; }
@@ -62,7 +62,7 @@ STYLE = """<style>
     .twinkle { animation: twinkle 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
     @keyframes twinkle { 0%, 100% { transform: scale(1); } 50% { transform: scale(.5); } }
     @keyframes blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .draw, .ink { stroke-dashoffset: 0 !important; } }
   </style>"""
 
 DEFS = """<defs>
@@ -100,8 +100,8 @@ def svg(name, w, h, label, body, extra_defs=""):
 
 def T(x, y, s, txt, fill=INK, w="r", anchor=None, ls=None, maxw=None, op=None, v=False, cls=None, style=None):
     a = [f'x="{x}" y="{y}" font-size="{s}" fill="{fill}"']
-    if w == "m":
-        a.append('data-w="m"')
+    if w != "r":
+        a.append(f'data-w="{w}"')
     if anchor:
         a.append(f'text-anchor="{anchor}"')
     if ls:
@@ -147,16 +147,31 @@ def label(x, y, txt, fill=SEA, anchor=None):
 
 
 # ------------------------------------------------------------------ quote cloud
-_clip_n = 0
+# Choreography: the four big lines land first (they set the page's rhythm), the rest are
+# written in roughly in reading order, then the props arrive (stamp, notes, pin, doodles),
+# and last the 吾且问 question gets its answer handwritten in. After that only a handful of
+# slow loops stay alive: the pinned note swings, the sticky note sways, (=ω=.) wobbles, two
+# sparkles twinkle. Everything else stays still so the page reads cleanly.
 
 
-def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None, wobble=False):
-    """Phrase that pops in (fade + rise), like the original banner."""
+def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None, wobble=False, cls="pop"):
+    """Phrase that pops in (fade + rise)."""
     t = T(x, y, s, txt, fill, w, anchor, ls or None, op=op, v=v)
     if wobble:
         t = f'<g class="wobble">{t}</g>'
-    g = f'<g class="pop" style="animation-delay:{delay:.2f}s">{t}</g>'
+    g = f'<g class="{cls}" style="animation-delay:{delay:.2f}s">{t}</g>'
     return f'<g transform="rotate({rot})">{g}</g>' if rot else g
+
+
+def scribbled(mid, x, y, s, txt, fill=INK, w="r", op=None, ls=0, begin=0.0, dur=1.0, anchor=None):
+    """Phrase revealed left-to-right as if being written. SMIL, so it also runs inside <img>.
+    The mask uses the keyword `white` on purpose: the dark token swap rewrites #FFFFFF."""
+    tw = width(txt, s, w, ls)
+    x0 = x - (tw / 2 if anchor == "middle" else 0)
+    m = (f'<mask id="{mid}" maskUnits="userSpaceOnUse"><rect x="{x0 - 4:.1f}" y="{y - s * 1.1:.1f}" width="0" height="{s * 1.5:.1f}" fill="white">'
+         f'<animate attributeName="width" from="0" to="{tw + 8:.1f}" begin="{begin}s" dur="{dur}s" fill="freeze" '
+         f'calcMode="spline" keyTimes="0;1" keySplines=".45 .05 .55 .95"/></rect></mask>')
+    return m + f'<g mask="url(#{mid})">{T(x, y, s, txt, fill, w, anchor, ls or None, op=op)}</g>'
 
 
 def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
@@ -169,70 +184,114 @@ def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
             f'fill="{fill}" fill-opacity="{op}"/>{t}</g>')
 
 
+def pin(cx, cy):
+    """Push pin seen from above: soft shadow, sea head, white glint."""
+    return (f'<ellipse cx="{cx + 2}" cy="{cy + 3}" rx="5" ry="3.4" fill="{INK}" fill-opacity=".16"/>'
+            f'<circle cx="{cx}" cy="{cy}" r="5.2" fill="{SEA}"/><circle cx="{cx - 1.6}" cy="{cy - 1.8}" r="1.6" fill="#FFFFFF" fill-opacity=".7"/>')
+
+
+def doodle(d, delay, color=INK, op=".38", sw=1.3, length=300):
+    """Pen stroke drawn on (stroke-dashoffset)."""
+    return (f'<path class="ink" style="animation-delay:{delay}s;stroke-dasharray:{length};stroke-dashoffset:{length}" d="{d}" '
+            f'fill="none" stroke="{color}" stroke-opacity="{op}" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round"/>')
+
+
 POP_CSS = """<style>
     .pop { animation: pop .7s cubic-bezier(.2, .8, .3, 1.25) both; }
     @keyframes pop { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .land { animation: land .8s cubic-bezier(.2, .9, .25, 1.15) both; transform-box: fill-box; transform-origin: 30% 80%; }
+    @keyframes land { from { opacity: 0; transform: translateY(-14px) scale(1.06); } to { opacity: 1; transform: none; } }
     .stamp { animation: stamp .5s cubic-bezier(.3, 1.5, .5, 1) both; transform-box: fill-box; transform-origin: center; }
     @keyframes stamp { from { opacity: 0; transform: scale(1.5) rotate(4deg); } to { opacity: 1; transform: none; } }
+    .ink { animation: ink 1s ease-out forwards; }
+    @keyframes ink { to { stroke-dashoffset: 0; } }
     .wobble { animation: wobble 3.2s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 90%; }
     @keyframes wobble { from { transform: rotate(-8deg); } to { transform: rotate(-2deg); } }
-  </style>"""  # the original banner's phrase animations
+    .drop { animation: drop .9s cubic-bezier(.25, 1.4, .45, 1) both; transform-box: fill-box; transform-origin: 50% 0; }
+    @keyframes drop { from { opacity: 0; transform: translateY(-22px) rotate(-7deg); } to { opacity: 1; transform: none; } }
+    .swing { animation: swing 5.5s ease-in-out 3.4s infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
+    @keyframes swing { from { transform: rotate(-1.6deg); } to { transform: rotate(1.6deg); } }
+    .sway { animation: sway 7s ease-in-out 3s infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
+    @keyframes sway { from { transform: rotate(-.8deg) translateY(0); } to { transform: rotate(.8deg) translateY(1px); } }
+  </style>"""
 
 
 def banner():
-    W, H = 880, 404
-    p = [tile("pg", 8, 1, 864, 400, 10, glows=[("gSea", 120, 40, 320, "drift"), ("gSun", 790, 380, 300, "drift2")], dots=True, grain=True, hair=".12")]
-    # header line: journal date
-    p.append(f'<line x1="610" y1="44" x2="852" y2="44" stroke="{INK}" stroke-opacity=".18"/>')
-    p.append(T(612, 38, META, "Last updated", INK, op=SOFT, ls=1))
+    W, H = 880, 476
+    p = [tile("pg", 8, 1, 864, H - 2, 10, glows=[("gSea", 120, 40, 340, "drift"), ("gSun", 790, 440, 320, "drift2")], dots=True, grain=True, hair=".12")]
+    # journal header
+    p.append(f'<line x1="612" y1="44" x2="852" y2="44" stroke="{INK}" stroke-opacity=".18"/>')
+    p.append(T(614, 38, META, "Last updated", INK, op=SOFT, ls=1))
     p.append(T(852, 38, BODY, LAST_UPDATED, INK, anchor="end"))
-    p.append(f'<g transform="rotate(-90 36 372)">{T(36, 372, META, "SHIRUMESU’S NOTE", INK, op=".4", ls=4)}</g>')
     p.append(f'<rect x="300" y="-6" width="116" height="22" fill="{SEA}" fill-opacity=".14" transform="rotate(-3 358 5)"/>')
 
-    import random
-    _delays = [round(0.10 + 0.06 * i, 2) for i in range(26)]
-    random.Random(7).shuffle(_delays)
-    d = iter(_delays)
-    # row 1
-    p.append(f'<path class="draw" style="animation-delay:.9s" d="M106 70 C 200 64 330 72 450 66 S 540 64 562 68" fill="none" stroke="{SEA}" stroke-width="2.2" stroke-linecap="round"/>')
-    p.append(written(106, 58, 29, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=next(d)))
-    p.append(written(142, 92, 12.5, "你能回到过去拯救那个没被 QB 欺骗的我吗", INK, op=SOFT, delay=next(d)))
-    p.append(written(582, 30, 17, "一即是全，全即是一", SEA, ls=1, v=True, delay=next(d)))
-    p.append(written(620, 92, 16, "晚安，Sion", INK, op=SOFT, delay=next(d)))
-    p.append(written(104, 128, 18, "区区小司…", SEA, delay=next(d)))
-    p.append(written(236, 118, 14, "我师傅的真实身份是…好人", INK, delay=next(d)))
-    p.append(written(456, 110, 17, "(=ω=.)", SEA, delay=next(d), wobble=True))
-    p.append(f'<path class="draw" style="animation-delay:1.4s" d="M448 104 C 446 90 470 86 492 88 C 512 90 518 100 512 108 C 504 118 470 118 456 114 C 446 110 444 100 452 94" fill="none" stroke="{INK}" stroke-opacity=".35" stroke-width="1.2" stroke-linecap="round"/>')
-    p.append(written(428, 144, 18, "アッシエント!", INK, rot="-2 480 138", delay=next(d)))
-    # P5R: flat ink label
-    p.append(f'<g transform="rotate(-6 721 124)"><g class="stamp" style="animation-delay:1.12s"><rect x="606" y="96" width="230" height="56" fill="{INK}"/>'
-             + T(721, 137, 35, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
-    p.append(written(222, 160, 21, "娶妻当如古河渚", INK, delay=next(d)))
-    # 計画通り with marker
-    p.append(marker(108, 210, 296, 18, .9, -1))
-    p.append(written(112, 230, 48, "計画通り…", INK, "m", ls=1, delay=next(d)))
-    p.append(written(408, 196, 15, "原来你真是美发师啊", SEA, delay=next(d)))
-    # EL PSY on sea tape
-    p.append(f'<g transform="rotate(-3 735 206)"><rect x="626" y="188" width="218" height="34" fill="{SEA}" fill-opacity=".12"/>'
-             + written(735, 212, 18, "EL PSY CONGROO", INK, anchor="middle", ls=2, delay=next(d)) + "</g>")
-    p.append(written(420, 250, 23, "你这家伙在看我吧", INK, rot="-2 510 242", delay=next(d)))
-    p.append(written(642, 262, 16, "秀吉的性别是秀吉啊!", SEA, delay=next(d)))
-    p.append(written(113, 250, 14, "吾且问，汝为人乎", INK, op=SOFT, ls=1, v=True, delay=next(d)))
-    p.append(written(140, 276, 14, "立于浮华之世，奏响天籁之音。", INK, op=SOFT, delay=next(d)))
-    p.append(written(140, 310, 19, "为了我，成为炎拳吧", INK, delay=next(d)))
-    p.append(written(138, 340, 15, "家庭教师是你真的太好了", SEA, delay=next(d)))
-    p.append(written(150, 376, 14, "有木有WIFI?", INK, delay=next(d)))
-    p.append(written(380, 292, 15, "请别忘记，这最棒的一年。", SEA, delay=next(d)))
-    p.append(f'<path class="draw" style="animation-delay:2s" d="M380 299 C 440 296 500 300 562 296" fill="none" stroke="{SEA}" stroke-opacity=".5" stroke-width="1.4" stroke-linecap="round"/>')
-    p.append(written(600, 290, 13, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(d)))
-    p.append(written(390, 334, 21, "友情・努力・勝利", INK, "m", ls=1, delay=next(d)))
-    # 放課後 on a sticky note
-    p.append(note(618, 304, 188, 38, 2))
-    p.append(f'<g transform="rotate(2 712 323)">{written(712, 330, 19, "放課後ティータイム", ON_SUN, anchor="middle", delay=next(d))}</g>')
-    p.append(written(322, 370, 29, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=next(d)))
-    p.append(f'<path class="draw" style="animation-delay:2.6s" d="M318 382 Q 360 377 400 382 T 480 382 T 560 382 T 640 382 T 720 382 T 790 380" fill="none" stroke="{INK}" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>')
-    # two tiny sun dots as the only ornament
-    p.append(f'<circle class="blink" cx="548" cy="100" r="3" fill="{SUN}"/><circle class="blink" style="animation-delay:-1.6s" cx="842" cy="356" r="3" fill="{SUN}"/>')
+    # wave 1 — the four anchors, landing on a diagonal
+    p.append(written(40, 64, 29, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=.1, cls="land"))
+    p.append(marker(40, 212, 250, 18, .75, -1))
+    p.append(written(44, 234, 48, "計画通り…", INK, "m", ls=1, delay=.3, cls="land"))
+    p.append(written(352, 270, 32, "山田尚子是神！", INK, "b", delay=.5, cls="land"))
+    p.append(written(236, 452, 29, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=.7, cls="land"))
+
+    # wave 2 — the rest, written in roughly reading order
+    seq = iter(round(1.0 + .075 * i, 3) for i in range(40))
+    # top band
+    p.append(written(76, 98, 12.5, "你能回到过去拯救那个没被 QB 欺骗的我吗", INK, op=SOFT, delay=next(seq)))
+    p.append(written(484, 62, 17, "(=ω=.)", SEA, delay=next(seq), wobble=True))
+    p.append(written(578, 26, 17, "一即是全，全即是一", SEA, ls=1, v=True, delay=next(seq)))
+    p.append(written(626, 82, 16, "晚安，Sion", INK, op=SOFT, delay=next(seq)))
+    p.append(written(40, 142, 18, "区区小司…", SEA, delay=next(seq)))
+    p.append(written(150, 134, 14, "我师傅的真实身份是…好人", INK, delay=next(seq)))
+    p.append(written(350, 126, 18, "アッシエント!", INK, rot="-3 407 120", delay=next(seq)))
+    p.append(written(370, 170, 21, "娶妻当如古河渚", INK, delay=next(seq)))
+    # middle band
+    p.append(written(316, 208, 15, "原来你真是美发师啊", SEA, delay=next(seq)))
+    p.append(written(620, 252, 23, "你这家伙在看我吧", INK, rot="-2 712 244", delay=next(seq)))
+    p.append(written(686, 286, 16, "秀吉的性别是秀吉啊!", SEA, delay=next(seq)))
+    # lower band
+    p.append(written(44, 296, 15, "吾且问，汝为人乎", INK, op=SOFT, ls=1, delay=next(seq)))
+    p.append(written(340, 312, 15, "请别忘记，这最棒的一年", SEA, delay=next(seq)))
+    p.append(written(548, 314, 13, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(seq)))
+    p.append(written(44, 360, 14, "立于浮华之世，奏响天籁之音", INK, op=SOFT, delay=next(seq)))
+    p.append(written(300, 368, 24, "欢迎回来，京阿尼", INK, "h", delay=next(seq)))
+    p.append(written(44, 396, 19, "为了我，成为炎拳吧", INK, delay=next(seq)))
+    p.append(written(440, 412, 21, "友情・努力・勝利", INK, "m", ls=1, delay=next(seq)))
+    p.append(written(250, 404, 17, "明天，美食广场见", INK, op=".86", delay=next(seq)))
+    p.append(written(44, 430, 15, "家庭教师是你真的太好了", SEA, delay=next(seq)))
+    p.append(written(44, 456, 14, "有木有WIFI?", INK, delay=next(seq)))
+    p.append(written(518, 370, 16, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
+
+    # wave 3 — props
+    p.append(f'<g transform="rotate(-6 727 124)"><g class="stamp" style="animation-delay:2.3s"><rect x="612" y="96" width="230" height="56" fill="{INK}"/>'
+             + T(727, 137, 35, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
+    p.append(f'<g transform="rotate(-3 735 192)"><g class="pop" style="animation-delay:2.45s"><rect x="626" y="174" width="218" height="34" fill="{SEA}" fill-opacity=".12"/>'
+             + T(735, 198, 18, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
+    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(660, 330, 188, 38, 2)}'
+             f'<g transform="rotate(2 754 349)">{T(754, 356, 19, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
+    # pinned card, swings from its pin
+    card = (f'<rect x="650" y="384" width="198" height="42" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
+            f'<rect x="650" y="384" width="198" height="42" rx="3" fill="url(#wash)"/>'
+            + T(658, 411, 14, "本喵明明什么坏事都没干喵！", INK) + pin(749, 389))
+    p.append(f'<g transform="rotate(3 749 389)"><g class="drop" style="animation-delay:2.8s"><g class="swing">{card}</g></g></g>')
+
+    # doodles (pen + highlighter), drawn after the text they belong to
+    p.append(doodle("M40 76 C 140 70 280 79 380 72 S 452 70 462 74", .9, SEA, "1", 2.2, 460))
+    p.append(doodle("M478 54 C 476 40 500 36 522 38 C 542 40 548 50 542 58 C 534 68 500 68 486 64 C 476 60 474 50 482 44", 2.0, INK, ".35", 1.2, 200))
+    p.append(doodle("M546 150 c -4 -7 -12 -4 -10 2 c 2 5 10 9 10 9 c 0 0 8 -4 10 -9 c 2 -6 -6 -9 -10 -2", 2.1, SEA, ".7", 1.4, 80))  # heart
+    p.append(doodle("M500 234 l -5 -10 M518 228 l 0 -12 M536 234 l 6 -10", 2.2, SUN, "1", 2.4, 40))  # burst at 神
+    p.append(doodle("M340 320 C 400 317 460 321 504 317", 2.3, SEA, ".5", 1.4, 200))
+    p.append(doodle("M36 302 C 30 312 36 322 58 324 M52 318 58 324 51 329", 2.9, INK, ".35", 1.2, 80))  # question → answer arrow
+    p.append(doodle("M296 380 C 360 376 420 381 494 377", 2.4, SUN, "1", 3.2, 220))
+    p.append(doodle("M232 464 Q 272 459 312 464 T 392 464 T 472 464 T 552 464 T 632 464 T 692 462", 2.7, INK, ".28", 1.6, 520))
+    note_d = "M628 338 v -16 l 10 -3 v 16 M628 338 a 3.2 2.6 -20 1 1 -1 -.4 M638 335 a 3.2 2.6 -20 1 1 -1 -.4"  # ♪♪
+    p.append(doodle(note_d, 2.9, SEA, ".6", 1.4, 120))
+
+    # the answer to 吾且问 is handwritten in last
+    p.append(scribbled("ans", 64, 326, 17, "否，吾乃天——壶中之天", SEA, "m", begin=3.0, dur=1.2))
+
+    # sparkles: the only ornaments that keep moving
+    star = "M0-6 1.3-1.3 6 0 1.3 1.3 0 6-1.3 1.3-6 0-1.3-1.3Z"
+    p.append(f'<g transform="translate(560 112)"><path class="twinkle" d="{star}" fill="{SUN}"/></g>')
+    p.append(f'<g transform="translate(852 466)"><path class="twinkle" style="animation-delay:-1.8s" d="{star}" fill="{SEA}" fill-opacity=".7"/></g>')
     svg("banner", W, H, f"shirumesu's notebook · last updated {LAST_UPDATED}", "\n  ".join(p), POP_CSS)
 
 
@@ -343,11 +402,10 @@ def projects():
     # row 2: three mid projects
     feather = (f'<path d="M14 40C16 26 24 12 40 6C39 20 32 32 17 38Z" fill="none" stroke="{SEA}" stroke-width="1.6" stroke-linejoin="round"/>'
                f'<path d="M10 44 34 14M22 28 29 29M26 22 33 22M18 34 24 35" stroke="{SEA}" stroke-width="1.4" stroke-linecap="round"/>')
-    gei = T(24, 33, HEAD, "芸", SEA, "m", "middle")
     mids = [
         ("uibot", "羽衣 bot", f'<g transform="translate(28 24)">{feather}</g>', "基于 Nonebot 的 QQ 机器人", "搜图、订阅、彩云续写……", "Python", 0),
         ("neopot", "Neo-pot", '<image href="@img/neopot-icon.webp" x="28" y="26" width="44" height="44"/>', "pot-desktop 的现代化重构", "划词翻译 + OCR，跨平台", "TypeScript", 1),
-        ("gei", "芸", f'<g transform="translate(28 26)"><rect width="44" height="44" rx="8" fill="{SEA}" fill-opacity=".08" stroke="{SEA}" stroke-opacity=".3"/><g transform="translate(-2 4)">{gei}</g></g>', "一套 Skill，开箱即用", "涵盖所有使用场景", "AI · Skills", 2),
+        ("arubox", "arubox", '<image href="@img/arubox-icon.svg" x="28" y="26" width="44" height="44"/>', "托盘常驻的个人工具箱", "桌面整理・启动器・截图・翻译", "Go · TypeScript · macOS / Win", 2),
     ]
     h2 = 212
     for key, name, icon, d1, d2, meta, i in mids:
@@ -362,8 +420,7 @@ def projects():
         svg(f"proj-{key}", 293, h2, name, "\n  ".join(p))
 
     # row 3: three small · row 4: two compact
-    smalls = [("gptize", "GPTize", "好玩", "让文本变成 GPT 一样味大。"), ("respond", "Respond-like-human", "好玩", "让你的 GPT 说人话"),
-              ("antianime", "反二次元许可证", "好玩", "二次元完蛋了喵！")]
+    smalls = [("gptize", "GPTize", "好玩", "让文本变成 GPT 一样味大。"), ("antianime", "反二次元许可证", "好玩", "二次元完蛋了喵！")]
     h3 = 128
     for i, (key, name, cat, desc) in enumerate(smalls):
         x0 = 8
@@ -373,6 +430,7 @@ def projects():
         p.append(T(x0 + 23, 76, HEAD, name, INK, "m", maxw=236))
         p.append(T(x0 + 23, 104, BODY, desc, INK, op=".86", maxw=236))
         svg(f"row-{key}", 293, h3, f"{name} — {desc}", "\n  ".join(p))
+    ad_slot(h3)
     mods = [("sharespire", "ShareTheSpire2", "杀戮尖塔 2 物品共享模组"), ("shopsts2", "Shop-Enhancement-STS2", "杀戮尖塔 2 商店体验增强模组")]
     h4 = 84
     for i, (key, name, desc) in enumerate(mods):
@@ -383,6 +441,35 @@ def projects():
         p.append(T(x0 + 400, 64, META, desc, INK, op=SOFT, anchor="end", maxw=180))
         p.append(T(x0 + 400, 37, META, "↗", SEA, anchor="end"))
         svg(f"row-{key}", 440, h4, f"{name} — {desc}", "\n  ".join(p))
+
+
+def ad_slot(h):
+    """Joke sponsor tile: a vacant ad slot 'trusted by' big names. The guest logos keep their
+    own brand colours (that is the joke) and are drawn small and flat; a note says it is fake."""
+    x0 = 8
+    p = [tile("tad", x0, TH, 293 - 16, h - 2 * TH, glows=[("gSun", 250, 130, 120, "drift")])]
+    p.append(T(x0 + 23, 36, META, "SPONSORED", INK, op=SOFT, ls=2))
+    p.append(T(x0 + 254, 36, META, "虚位以待", SEA, anchor="end"))
+    p.append(marker(x0 + 21, 64, width("广告位招租", HEAD, "m") + 6, 10, .3))
+    p.append(T(x0 + 23, 76, HEAD, "广告位招租", INK, "m"))
+    # trusted by: G · four squares · your logo here
+    y = 99
+    p.append(T(x0 + 23, y + 4, META, "trusted by", INK, op=SOFT, ls=.5))
+    gx, r = x0 + 100, 6.6
+    c = 2 * 3.14159 * r
+    for col, a0, a1 in [("#4285F4", 0, 48), ("#34A853", 48, 140), ("#FBBC05", 140, 214), ("#EA4335", 214, 318)]:
+        seg = c * (a1 - a0) / 360
+        p.append(f'<circle cx="{gx}" cy="{y}" r="{r}" fill="none" stroke="{col}" stroke-width="3" '
+                 f'stroke-dasharray="{seg:.2f} {c:.2f}" stroke-dashoffset="{-c * a0 / 360:.2f}"/>')
+    p.append(f'<rect x="{gx}" y="{y - 1.5}" width="{r + 1.5}" height="3" fill="#4285F4"/>')
+    mx = gx + 16
+    for i, col in enumerate(["#F25022", "#7FBA00", "#00A4EF", "#FFB900"]):
+        p.append(f'<rect x="{mx + (i % 2) * 7.4:.1f}" y="{y - 7 + (i // 2) * 7.4:.1f}" width="6.6" height="6.6" fill="{col}"/>')
+    bx = mx + 24
+    p.append(f'<rect x="{bx}" y="{y - 7.5}" width="15" height="15" rx="3" fill="none" stroke="{INK}" stroke-opacity=".35" stroke-dasharray="2 2"/>')
+    p.append(T(bx + 7.5, y + 4, META, "?", INK, op=SOFT, anchor="middle"))
+    p.append(T(x0 + 254, y + 4, META, "*纯属虚构", INK, op=".4", anchor="end"))
+    svg("row-ad", 293, h, "广告位招租 — 虚位以待（赞助商标志纯属娱乐）", "\n  ".join(p))
 
 
 # ------------------------------------------------------------------ my website / one more thing
@@ -441,6 +528,5 @@ if __name__ == "__main__":
     for f in SRC.glob("*.svg"):
         f.unlink()
     for DARK in (False, True):
-        _clip_n = 0
         banner(); titles(); about(); projects(); site(); support(); footer()
     print("\n".join(sorted(f.name for f in SRC.glob("*.svg"))))

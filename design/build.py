@@ -9,6 +9,9 @@ using LXGW WenKai, and inlines `@img/<file>` references as data URIs.
 Setup (fonts are not committed, ~25MB each):
     pip install fonttools
     gh release download -R lxgw/LxgwWenKai -p 'LXGWWenKai-Regular.ttf' -p 'LXGWWenKai-Medium.ttf' -D design/fonts
+    # accent hands for the quote cloud (Google Fonts, OFL)
+    curl -L -o design/fonts/LongCang-Regular.ttf https://raw.githubusercontent.com/google/fonts/main/ofl/longcang/LongCang-Regular.ttf
+    curl -L -o design/fonts/MaShanZheng-Regular.ttf https://raw.githubusercontent.com/google/fonts/main/ofl/mashanzheng/MaShanZheng-Regular.ttf
 
 Usage:
     python design/build.py            # all sources
@@ -17,7 +20,7 @@ Usage:
 <text> attributes understood by the builder:
     x, y            baseline origin (for data-v: x is the column centre, y the top)
     font-size       px
-    data-w          "m" for Medium weight, default Regular
+    data-w          "m" Medium · "h" Long Cang (scribble) · "b" Ma Shan Zheng (brush); default Regular
     text-anchor     start | middle | end
     letter-spacing  px
     data-v          vertical text (uses the font's `vert` alternates)
@@ -60,9 +63,11 @@ class Face:
         self.hmtx = self.font["hmtx"]
         self.upm = self.font["head"].unitsPerEm
         self.vert = {}
-        gsub = self.font["GSUB"].table
+        # fonts without a GSUB feature list simply have no vertical alternates
+        gsub = self.font["GSUB"].table if "GSUB" in self.font else None
+        records = gsub.FeatureList.FeatureRecord if gsub is not None and gsub.FeatureList else []
         idx = set()
-        for fr in gsub.FeatureList.FeatureRecord:
+        for fr in records:
             if fr.FeatureTag == "vert":
                 idx.update(fr.Feature.LookupListIndex)
         for i in idx:
@@ -98,7 +103,8 @@ FACES = {}
 
 def face(w):
     if w not in FACES:
-        fn = {"r": "LXGWWenKai-Regular.ttf", "m": "LXGWWenKai-Medium.ttf"}[w]
+        fn = {"r": "LXGWWenKai-Regular.ttf", "m": "LXGWWenKai-Medium.ttf",
+              "h": "LongCang-Regular.ttf", "b": "MaShanZheng-Regular.ttf"}[w]
         p = FONT_DIR / fn
         if not p.exists():
             sys.exit(f"missing font {p} - see the docstring for setup")
