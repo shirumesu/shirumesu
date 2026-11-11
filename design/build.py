@@ -157,7 +157,75 @@ def measure(runs, ls):
     return total - ls if total else 0
 
 
-def render_text(attrs, body):
+PATH_TOK = re.compile(r"([MLHVQCZ])|(-?\d*\.?\d+)")
+PATH_ARGS = {"M": 2, "L": 2, "H": 1, "V": 1, "Q": 4, "C": 6, "Z": 0}
+
+
+def _num(v):
+    s = ntos(round(v, 1))
+    if s.startswith("0."):
+        return s[1:]
+    if s.startswith("-0."):
+        return "-" + s[2:]
+    return s
+
+
+def _join(nums):
+    """Numbers with the fewest separators an SVG parser still splits correctly."""
+    out = ""
+    for n in nums:
+        prev = out.rsplit(" ", 1)[-1].split("-")[-1]
+        if out and not n.startswith("-") and not (n.startswith(".") and "." in prev):
+            out += " "
+        out += n
+    return out
+
+
+def compact_path(d):
+    """Rewrite fontTools' absolute M/L/H/V/Q/C/Z outline as relative commands. Deltas are taken
+    between the already-rounded absolute points, so the shape is unchanged; text paths shrink ~25%."""
+    toks = PATH_TOK.findall(d)
+    out, prev = [], None
+    cx = cy = sx = sy = 0.0
+    i = 0
+    while i < len(toks):
+        cmd = toks[i][0]
+        if not cmd:
+            raise ValueError(f"path data without a command at token {i}: {d[:60]}")
+        i += 1
+        n = PATH_ARGS[cmd]
+        if n == 0:
+            out.append("z")
+            prev, cx, cy = "z", sx, sy
+            continue
+        first = True
+        while i < len(toks) and not toks[i][0]:
+            vals = [float(toks[i + k][1]) for k in range(n)]
+            i += n
+            if cmd == "M" and not first:
+                cmd = "L"  # extra pairs after a moveto are implicit linetos (SVG spec)
+            first = False
+            if cmd == "H":
+                rel, cx = [vals[0] - cx], vals[0]
+            elif cmd == "V":
+                rel, cy = [vals[0] - cy], vals[0]
+            else:
+                rel = [v - (cx if k % 2 == 0 else cy) for k, v in enumerate(vals)]
+                cx, cy = vals[-2], vals[-1]
+                if cmd == "M":
+                    sx, sy = cx, cy
+            c = cmd.lower()
+            implicit = (prev == c and c != "m") or (prev == "m" and c == "l")
+            nums = [_num(v) for v in rel]
+            if implicit:
+                out.append(_join([out.pop(), *nums]) if out else _join(nums))
+            else:
+                out.append(c + _join(nums))
+            prev = c
+    return "".join(out)
+
+
+def render_text(attrs, body, compact=True):
     base = {k: v for k, v in attrs.items() if k in ("font-size", "data-w", "fill")}
     base.setdefault("font-size", "16")
     runs = runs_of(body, base)
@@ -214,12 +282,13 @@ def render_text(attrs, body):
     if len(fills) <= 1:
         fill = next(iter(fills)) if fills else top_fill
         fa = f' fill="{fill}"' if fill else ""
-        return f'<path{fa} {passthrough} d="{"".join(d for _, d in parts)}"/>'.replace("  ", " ")
+        d = "".join(d for _, d in parts)
+        return f'<path{fa} {passthrough} d="{compact_path(d) if compact else d}"/>'.replace("  ", " ")
     # several colours: group by fill
     groups = {}
     for fl, d in parts:
         groups.setdefault(fl, []).append(d)
-    inner = "".join(f'<path fill="{fl}" d="{"".join(ds)}"/>' for fl, ds in groups.items())
+    inner = "".join(f'<path fill="{fl}" d="{compact_path("".join(ds)) if compact else "".join(ds)}"/>' for fl, ds in groups.items())
     return f"<g {passthrough}>{inner}</g>"
 
 
@@ -245,7 +314,8 @@ def build_svg(src_text):
 def text_path(s, size, w="r", x=0, y=0, anchor="start", ls=0):
     """Helper for other build steps (e.g. the visitor worker glyphs)."""
     attrs = {"x": str(x), "y": str(y), "font-size": str(size), "data-w": w, "text-anchor": anchor, "letter-spacing": str(ls)}
-    m = re.search(r' d="([^"]*)"', render_text(attrs, html.escape(s)))
+    # absolute coordinates here: the visitor worker places these glyphs itself
+    m = re.search(r' d="([^"]*)"', render_text(attrs, html.escape(s), compact=False))
     return m.group(1), measure([({"font-size": str(size), "data-w": w}, s)], ls)
 
 
