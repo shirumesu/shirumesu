@@ -62,11 +62,9 @@ class Face:
         self.hmtx = self.font["hmtx"]
         self.upm = self.font["head"].unitsPerEm
         self.vert = {}
-        # fonts without a GSUB feature list simply have no vertical alternates
-        gsub = self.font["GSUB"].table if "GSUB" in self.font else None
-        records = gsub.FeatureList.FeatureRecord if gsub is not None and gsub.FeatureList else []
+        gsub = self.font["GSUB"].table
         idx = set()
-        for fr in records:
+        for fr in gsub.FeatureList.FeatureRecord:
             if fr.FeatureTag == "vert":
                 idx.update(fr.Feature.LookupListIndex)
         for i in idx:
@@ -228,7 +226,9 @@ def render_text(attrs, body):
 def inline_images(svg):
     def rep(m):
         p = IMG / m.group(1)
-        mime = mimetypes.guess_type(p.name)[0] or "application/octet-stream"
+        mime = mimetypes.guess_type(p.name)[0]
+        if mime is None:
+            sys.exit(f"unknown image type for {p}")
         return f'href="data:{mime};base64,{base64.b64encode(p.read_bytes()).decode()}"'
 
     return re.sub(r'href="@img/([^"]+)"', rep, svg)

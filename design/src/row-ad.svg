@@ -60,5 +60,5 @@
   <rect x="131.4" y="99.4" width="6.6" height="6.6" fill="#FFB900"/>
   <rect x="148" y="91.5" width="15" height="15" rx="3" fill="none" stroke="#1F3A4A" stroke-opacity=".35" stroke-dasharray="2 2"/>
   <text x="155.5" y="103" font-size="12" fill="#1F3A4A" text-anchor="middle" fill-opacity=".62">?</text>
-  <text x="262" y="103" font-size="12" fill="#1F3A4A" text-anchor="end" fill-opacity=".4">*纯属虚构</text>
+  <text x="262" y="103" font-size="12" fill="#1F3A4A" text-anchor="end" fill-opacity=".62">*纯属虚构</text>
 </svg>

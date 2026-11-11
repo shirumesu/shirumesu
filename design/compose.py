@@ -16,6 +16,7 @@ Design system — "summer note"
   Motion: quotes are "written in" one by one; marker strokes sweep; glows drift slowly.
 """
 import html
+import math
 import pathlib
 import sys
 
@@ -155,24 +156,25 @@ def label(x, y, txt, fill=SEA, anchor=None):
 # The round handwriting ("x") is an accent for four lines only, not a second body face.
 
 
-def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, anchor=None, wobble=False, cls="pop"):
+def written(x, y, s, txt, fill=INK, w="r", op=None, ls=0, v=False, delay=0.0, rot=None, wobble=False, cls="pop"):
     """Phrase that pops in (fade + rise)."""
-    t = T(x, y, s, txt, fill, w, anchor, ls or None, op=op, v=v)
+    t = T(x, y, s, txt, fill, w, None, ls or None, op=op, v=v)
     if wobble:
         t = f'<g class="wobble">{t}</g>'
     g = f'<g class="{cls}" style="animation-delay:{delay:.2f}s">{t}</g>'
     return f'<g transform="rotate({rot})">{g}</g>' if rot else g
 
 
-def scribbled(mid, x, y, s, txt, fill=INK, w="r", op=None, ls=0, begin=0.0, dur=1.0, anchor=None):
+def scribbled(mid, x, y, s, txt, fill=INK, w="r", op=None, ls=0, begin=0.0, dur=1.0):
     """Phrase revealed left-to-right as if being written. SMIL, so it also runs inside <img>.
+    The mask's resting width is the full line, so a renderer without SMIL still shows it.
     The mask uses the keyword `white` on purpose: the dark token swap rewrites #FFFFFF."""
-    tw = width(txt, s, w, ls)
-    x0 = x - (tw / 2 if anchor == "middle" else 0)
-    m = (f'<mask id="{mid}" maskUnits="userSpaceOnUse"><rect x="{x0 - 4:.1f}" y="{y - s * 1.1:.1f}" width="0" height="{s * 1.5:.1f}" fill="white">'
-         f'<animate attributeName="width" from="0" to="{tw + 8:.1f}" begin="{begin}s" dur="{dur}s" fill="freeze" '
-         f'calcMode="spline" keyTimes="0;1" keySplines=".45 .05 .55 .95"/></rect></mask>')
-    return m + f'<g mask="url(#{mid})">{T(x, y, s, txt, fill, w, anchor, ls or None, op=op)}</g>'
+    full = width(txt, s, w, ls) + 8
+    k = begin / (begin + dur)
+    m = (f'<mask id="{mid}" maskUnits="userSpaceOnUse"><rect x="{x - 4:.1f}" y="{y - s * 1.1:.1f}" width="{full:.1f}" height="{s * 1.5:.1f}" fill="white">'
+         f'<animate attributeName="width" values="0;0;{full:.1f}" keyTimes="0;{k:.3f};1" begin="0s" dur="{begin + dur}s" fill="freeze" '
+         f'calcMode="spline" keySplines="0 0 1 1;.45 .05 .55 .95"/></rect></mask>')
+    return m + f'<g mask="url(#{mid})">{T(x, y, s, txt, fill, w, None, ls or None, op=op)}</g>'
 
 
 def tape_strip(cx, cy, rot, w=58, h=16):
@@ -194,7 +196,7 @@ def note(x, y, w, h, rot, fill=SUN, op=".5", tape=True):
 def pin(cx, cy):
     """Push pin seen from above: soft shadow, sea head, white glint."""
     return (f'<ellipse cx="{cx + 2}" cy="{cy + 3}" rx="5" ry="3.4" fill="{INK}" fill-opacity=".16"/>'
-            f'<circle cx="{cx}" cy="{cy}" r="5.2" fill="{SEA}"/><circle cx="{cx - 1.6}" cy="{cy - 1.8}" r="1.6" fill="#FFFFFF" fill-opacity=".7"/>')
+            f'<circle cx="{cx}" cy="{cy}" r="5.2" fill="{SEA}"/><circle cx="{cx - 1.6}" cy="{cy - 1.8}" r="1.6" fill="white" fill-opacity=".7"/>')
 
 
 def doodle(d, delay, color=INK, op=".38", sw=1.3, length=300):
@@ -261,10 +263,10 @@ def banner():
     p.append(poster("poster-keion.webp", 742, 352, 104, 147, -3, .35))
 
     # wave 1 — anchors
-    p.append(written(152, 74, 30, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=.2, cls="land"))
+    p.append(written(152, 74, 28, "ただの人間には興味ありません!", INK, "m", ls=.5, delay=.2, cls="land"))
     p.append(marker(150, 182, 296, 20, .9, -1))
     p.append(written(154, 206, 58, "計画通り…", INK, "m", ls=1, delay=.4, cls="land"))
-    p.append(written(40, 524, 30, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=.6, cls="land"))
+    p.append(written(40, 516, 30, "貧乳はステータスだ、希少価値だ!", SEA, ls=.5, delay=.6, cls="land"))
     p.append(written(476, 428, 34, "山田尚子是神！", INK, "x", delay=.75, cls="land"))
 
     seq = iter(round(1.0 + .07 * i, 3) for i in range(40))
@@ -274,7 +276,7 @@ def banner():
     p.append(written(258, 130, 14, "我师傅的真实身份是…好人", INK, delay=next(seq)))
     p.append(written(436, 148, 20, "アッシエント!", INK, rot="-5 494 140", delay=next(seq)))
     p.append(written(520, 112, 17, "(=ω=.)", SEA, delay=next(seq), wobble=True))
-    p.append(written(188, 232, 14, "原来你真是美发师啊", SEA, delay=next(seq)))
+    p.append(written(96, 424, 14, "原来你真是美发师啊", SEA, delay=next(seq)))
     p.append(written(336, 248, 24, "娶妻当如古河渚", INK, delay=next(seq)))
     p.append(written(206, 300, 27, "你这家伙在看我吧", INK, rot="-3 318 290", delay=next(seq)))
     p.append(written(446, 296, 17, "秀吉的性别是秀吉啊!", SEA, delay=next(seq)))
@@ -282,27 +284,27 @@ def banner():
     p.append(written(634, 214, 15, "晚安，Sion", INK, op=SOFT, delay=next(seq)))
     # the left margin, looser
     p.append(written(36, 226, 15, "吾且问，汝为人乎", INK, op=SOFT, ls=1, delay=next(seq)))
-    p.append(written(36, 322, 13, "立于浮华之世，奏响天籁之音", INK, op=SOFT, delay=next(seq)))
+    p.append(written(54, 322, 13, "立于浮华之世，奏响天籁之音", INK, op=SOFT, delay=next(seq)))
     p.append(written(36, 350, 20, "为了我，成为炎拳吧", INK, delay=next(seq)))
-    p.append(written(36, 380, 15, "家庭教师是你真的太好了", SEA, delay=next(seq)))
-    p.append(written(36, 462, 14, "有木有WIFI?", INK, delay=next(seq)))
+    p.append(written(70, 380, 15, "家庭教师是你真的太好了", SEA, delay=next(seq)))
+    p.append(written(124, 468, 14, "有木有WIFI?", INK, rot="-3 150 464", delay=next(seq)))
     # the lower middle, around the K-ON corner
     p.append(written(248, 340, 16, "请别忘记，这最棒的一年", SEA, delay=next(seq)))
     p.append(written(428, 320, 12.5, "淑女只让她心仪的人摸她的头发哦", INK, op=SOFT, delay=next(seq)))
     p.append(written(250, 390, 22, "友情・努力・勝利", INK, "m", ls=1, delay=next(seq)))
     p.append(written(478, 380, 22, "欢迎回来，京阿尼", INK, "x", delay=next(seq)))
-    p.append(written(254, 430, 16, "明天，美食广场见", INK, op=".86", delay=next(seq)))
-    p.append(written(300, 462, 15, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
+    p.append(written(286, 430, 16, "明天，美食广场见", INK, op=".86", delay=next(seq)))
+    p.append(written(332, 462, 15, "友谊是时间的窃贼", INK, op=SOFT, delay=next(seq)))
 
     # props
-    p.append(f'<g transform="rotate(-6 730 92)"><g class="stamp" style="animation-delay:2.4s"><rect x="618" y="64" width="224" height="54" fill="{INK}"/>'
-             + T(730, 104, 34, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
-    p.append(f'<g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="630" y="134" width="184" height="32" fill="{PAPER}" fill-opacity=".92"/>'
-             f'<rect x="630" y="134" width="184" height="32" fill="{SEA}" fill-opacity=".16"/>'
+    p.append(f'<g transform="rotate(-6 730 92)"><g class="stamp" style="animation-delay:2.4s"><rect x="626" y="64" width="216" height="54" fill="{INK}"/>'
+             + T(734, 104, 33, "P5R天下第一", PAPER, "m", "middle", 1) + '</g></g>')
+    p.append(f'<g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="624" y="134" width="196" height="32" fill="{PAPER}" fill-opacity=".92"/>'
+             f'<rect x="624" y="134" width="196" height="32" fill="{SEA}" fill-opacity=".16"/>'
              + T(722, 156, 17, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
-    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(624, 332, 178, 36, 3)}'
+    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(624, 332, 178, 36, 3, op=".9")}'
              f'<g transform="rotate(3 713 350)">{T(713, 356, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
-    card = (f'<rect x="470" y="452" width="196" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
+    card = (f'<rect x="456" y="452" width="224" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
             + T(568, 478, 15, "本喵明明什么坏事都没干喵！", INK, "x", anchor="middle") + pin(568, 457))
     p.append(f'<g transform="rotate(-3 568 457)"><g class="drop" style="animation-delay:2.75s"><g class="swing">{card}</g></g></g>')
     # badges next to the line they belong to
@@ -312,13 +314,13 @@ def banner():
     p.append(badge("badge-qb.webp", 438, 98, 16, 2.1, "bq"))
 
     # pen doodles
-    p.append(doodle("M152 86 C 250 80 400 89 500 82 S 568 80 578 84", 1.0, SEA, "1", 2.2, 460))
+    p.append(doodle("M152 86 C 250 80 400 89 480 82 S 540 80 548 84", 1.0, SEA, "1", 2.2, 460))
     p.append(doodle("M514 104 C 512 90 536 86 558 88 C 578 90 584 100 578 108 C 570 118 536 118 522 114 C 512 110 510 100 518 94", 2.0, INK, ".35", 1.2, 200))
     p.append(doodle("M248 348 C 310 345 370 349 412 345", 2.3, SEA, ".5", 1.4, 200))
     p.append(doodle("M34 232 C 28 242 34 252 52 254 M46 248 52 254 45 259", 2.9, INK, ".35", 1.2, 80))
     p.append(doodle("M474 390 C 540 386 600 391 648 387", 2.4, SUN, "1", 3.2, 220))
     p.append(doodle("M690 412 l 6 -10 M704 418 l 12 -4 M682 404 l -1 -12", 2.2, SUN, "1", 2.4, 40))  # burst at 神
-    p.append(doodle("M36 534 Q 76 529 116 534 T 196 534 T 276 534 T 356 534 T 436 534 T 494 532", 2.7, INK, ".28", 1.6, 520))
+    p.append(doodle("M36 526 Q 76 521 116 526 T 196 526 T 276 526 T 356 526 T 436 526 T 494 524", 2.7, INK, ".28", 1.6, 520))
 
     # the answer to 吾且问 is handwritten in last
     p.append(scribbled("ans", 58, 258, 20, "否，吾乃天——壶中之天", SEA, "x", begin=3.0, dur=1.3))
@@ -490,7 +492,7 @@ def ad_slot(h):
     y = 99
     p.append(T(x0 + 23, y + 4, META, "trusted by", INK, op=SOFT, ls=.5))
     gx, r = x0 + 100, 6.6
-    c = 2 * 3.14159 * r
+    c = 2 * math.pi * r
     for col, a0, a1 in [("#4285F4", 0, 48), ("#34A853", 48, 140), ("#FBBC05", 140, 214), ("#EA4335", 214, 318)]:
         seg = c * (a1 - a0) / 360
         p.append(f'<circle cx="{gx}" cy="{y}" r="{r}" fill="none" stroke="{col}" stroke-width="3" '
@@ -502,7 +504,7 @@ def ad_slot(h):
     bx = mx + 24
     p.append(f'<rect x="{bx}" y="{y - 7.5}" width="15" height="15" rx="3" fill="none" stroke="{INK}" stroke-opacity=".35" stroke-dasharray="2 2"/>')
     p.append(T(bx + 7.5, y + 4, META, "?", INK, op=SOFT, anchor="middle"))
-    p.append(T(x0 + 254, y + 4, META, "*纯属虚构", INK, op=".4", anchor="end"))
+    p.append(T(x0 + 254, y + 4, META, "*纯属虚构", INK, op=SOFT, anchor="end"))
     svg("row-ad", 293, h, "广告位招租 — 虚位以待（赞助商标志纯属娱乐）", "\n  ".join(p))
 
 
