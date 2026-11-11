@@ -319,8 +319,8 @@ def banner():
     p.append(f'<g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="624" y="134" width="196" height="32" fill="{PAPER}" fill-opacity=".92"/>'
              f'<rect x="624" y="134" width="196" height="32" fill="{SEA}" fill-opacity=".16"/>'
              + T(722, 156, 17, "EL PSY CONGROO", INK, anchor="middle", ls=2) + "</g></g>")
-    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(664, 330, 178, 36, 3, op=".9")}'
-             f'<g transform="rotate(3 753 348)">{T(753, 354, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
+    p.append(f'<g class="drop" style="animation-delay:2.6s"><g class="sway">{note(664, 318, 178, 36, 3, op=".9")}'
+             f'<g transform="rotate(3 753 336)">{T(753, 342, 18, "放課後ティータイム", ON_SUN, anchor="middle")}</g></g></g>')
     card = (f'<rect x="516" y="460" width="212" height="40" rx="3" fill="{PAPER}" stroke="{INK}" stroke-opacity=".14"/>'
             + T(622, 486, 15, "本喵明明什么坏事都没干喵！", INK, "x", anchor="middle") + pin(622, 465))
     p.append(f'<g transform="rotate(-3 622 465)"><g class="drop" style="animation-delay:2.75s"><g class="swing">{card}</g></g></g>')
