@@ -48,6 +48,6 @@
   <text x="35" y="100" font-size="20" fill="#DCE8EC" data-w="m">Neo-pot</text>
   <text x="35" y="134" font-size="15" fill="#DCE8EC" data-maxw="234" fill-opacity=".86">pot-desktop 的现代化重构</text>
   <text x="35" y="158" font-size="15" fill="#DCE8EC" data-maxw="234" fill-opacity=".86">划词翻译 + OCR，跨平台</text>
-  <text x="35" y="190" font-size="12" fill="#DCE8EC" letter-spacing="0.5" fill-opacity=".62">TypeScript</text>
+  <text x="35" y="190" font-size="12" fill="#DCE8EC" letter-spacing="0.5" fill-opacity=".7">TypeScript</text>
   <text x="258" y="190" font-size="12" fill="#6CC6DC" text-anchor="end">↗</text>
 </svg>

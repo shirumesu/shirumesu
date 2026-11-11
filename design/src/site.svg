@@ -46,7 +46,7 @@
   <circle cx="616" cy="76" r="22" fill="none" stroke="#FFFFFF" stroke-width="2"/>
   <text x="652" y="88" font-size="32" fill="#1F3A4A" data-w="m" letter-spacing="2">杜撰录</text>
   <text x="594" y="142" font-size="15" fill="#1F3A4A">总该写点什么，我说。</text>
-  <text x="594" y="168" font-size="12" fill="#1F3A4A" fill-opacity=".62">随笔・技术・AI・偶尔的碎碎念</text>
+  <text x="594" y="168" font-size="12" fill="#1F3A4A" fill-opacity=".7">随笔・技术・AI・偶尔的碎碎念</text>
   <line x1="594" y1="230" x2="830" y2="230" stroke="#1F3A4A" stroke-opacity=".12"/>
   <text x="594" y="260" font-size="15" fill="#177F98" data-w="m">konataizumi.com</text>
   <text x="830" y="260" font-size="15" fill="#177F98" text-anchor="end">↗</text>

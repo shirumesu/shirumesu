@@ -44,11 +44,11 @@
   </g>
   <rect x="8.5" y="4.5" width="276" height="119" rx="7.5" fill="none" stroke="#1F3A4A" stroke-opacity=".1"/>
   <rect x="9.5" y="5.5" width="274" height="117" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
-  <text x="31" y="36" font-size="12" fill="#1F3A4A" letter-spacing="2" fill-opacity=".62">SPONSORED</text>
+  <text x="31" y="36" font-size="12" fill="#1F3A4A" letter-spacing="2" fill-opacity=".7">SPONSORED</text>
   <text x="262" y="36" font-size="12" fill="#177F98" text-anchor="end">虚位以待</text>
   <g transform="rotate(0 29 64)"><rect class="sweep" style="animation-delay:0.3s" x="29" y="64" width="106.0" height="10" rx="5.0" fill="url(#marker)"/></g>
   <text x="31" y="76" font-size="20" fill="#1F3A4A" data-w="m">广告位招租</text>
-  <text x="31" y="103" font-size="12" fill="#1F3A4A" letter-spacing="0.5" fill-opacity=".62">trusted by</text>
+  <text x="31" y="103" font-size="12" fill="#1F3A4A" letter-spacing="0.5" fill-opacity=".7">trusted by</text>
   <circle cx="108" cy="99" r="6.6" fill="none" stroke="#4285F4" stroke-width="3" stroke-dasharray="5.53 41.47" stroke-dashoffset="-0.00"/>
   <circle cx="108" cy="99" r="6.6" fill="none" stroke="#34A853" stroke-width="3" stroke-dasharray="10.60 41.47" stroke-dashoffset="-5.53"/>
   <circle cx="108" cy="99" r="6.6" fill="none" stroke="#FBBC05" stroke-width="3" stroke-dasharray="8.52 41.47" stroke-dashoffset="-16.13"/>
@@ -59,6 +59,6 @@
   <rect x="124.0" y="99.4" width="6.6" height="6.6" fill="#00A4EF"/>
   <rect x="131.4" y="99.4" width="6.6" height="6.6" fill="#FFB900"/>
   <rect x="148" y="91.5" width="15" height="15" rx="3" fill="none" stroke="#1F3A4A" stroke-opacity=".35" stroke-dasharray="2 2"/>
-  <text x="155.5" y="103" font-size="12" fill="#1F3A4A" text-anchor="middle" fill-opacity=".62">?</text>
-  <text x="262" y="103" font-size="12" fill="#1F3A4A" text-anchor="end" fill-opacity=".62">*纯属虚构</text>
+  <text x="155.5" y="103" font-size="12" fill="#1F3A4A" text-anchor="middle" fill-opacity=".7">?</text>
+  <text x="262" y="103" font-size="12" fill="#1F3A4A" text-anchor="end" fill-opacity=".7">*纯属虚构</text>
 </svg>

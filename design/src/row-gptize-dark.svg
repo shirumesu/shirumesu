@@ -44,7 +44,7 @@
   </g>
   <rect x="8.5" y="4.5" width="276" height="119" rx="7.5" fill="none" stroke="#DCE8EC" stroke-opacity=".1"/>
   <rect x="9.5" y="5.5" width="274" height="117" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
-  <text x="31" y="36" font-size="12" fill="#DCE8EC" letter-spacing="2" fill-opacity=".62">好玩</text>
+  <text x="31" y="36" font-size="12" fill="#DCE8EC" letter-spacing="2" fill-opacity=".7">好玩</text>
   <text x="262" y="36" font-size="12" fill="#6CC6DC" text-anchor="end">↗</text>
   <text x="31" y="76" font-size="20" fill="#DCE8EC" data-w="m" data-maxw="236">GPTize</text>
   <text x="31" y="104" font-size="15" fill="#DCE8EC" data-maxw="236" fill-opacity=".86">让文本变成 GPT 一样味大。</text>

@@ -44,7 +44,7 @@ DARK_MAP = [
     ('values="0 0 0 0 .12  0 0 0 0 .23  0 0 0 0 .29  .12 0 0 0 -.035"', 'values="0 0 0 0 .86  0 0 0 0 .92  0 0 0 0 .95  .09 0 0 0 -.025"'),
 ]
 META, BODY, HEAD, DISP = 12, 15, 20, 32
-SOFT = ".62"  # secondary text opacity
+SOFT = ".7"  # secondary text opacity (4.7:1 on paper, AA for 12px meta text)
 LAST_UPDATED = "2026.11.11 Wed."
 
 STYLE = """<style>
@@ -362,16 +362,19 @@ def banner():
 
 # ------------------------------------------------------------------ titles
 def titles():
-    """Centred heading; decoration mirrors outward: sun dot · sea star · ring · hand wave · dashed rule."""
+    """Centred heading; decoration mirrors outward: sun dot · sea star · ring · hand wave · dashed rule.
+    The heading sits low in its strip (TOP of air above, little below) so each section reads as one
+    group: roughly twice the space before a heading as between the heading and its cards."""
+    TOP = 12
     star = "M0-6 1.3-1.3 6 0 1.3 1.3 0 6-1.3 1.3-6 0-1.3-1.3Z"
     for key, en, jp in [("about", "about me", "じこしょうかい"), ("projects", "projects", "つくったもの"),
                         ("stats", "github stats", "きろく"), ("site", "my website", "ぶろぐ"), ("more", "one more thing", "おまけ")]:
         we = width(en, HEAD, "m")
-        cx, cy = 440, 26
+        cx, cy = 440, 26 + TOP
         half = we / 2 + 26
-        p = [marker(cx - we / 2 - 3, 21, we + 6, 9, .2),
-             T(cx, 28, HEAD, en, INK, "m", "middle"),
-             T(cx, 48, META, jp, SEA, anchor="middle", ls=3)]
+        p = [marker(cx - we / 2 - 3, 21 + TOP, we + 6, 9, .2),
+             T(cx, 28 + TOP, HEAD, en, INK, "m", "middle"),
+             T(cx, 48 + TOP, META, jp, SEA, anchor="middle", ls=3)]
         for sgn in (-1, 1):
             x = lambda d: cx + sgn * (half + d)
             p.append(f'<circle class="blink" cx="{x(0):.1f}" cy="{cy}" r="3" fill="{SUN}"/>')
@@ -386,7 +389,7 @@ def titles():
             a, b = sorted((r0, r1))
             p.append(f'<line x1="{a:.1f}" y1="{cy}" x2="{b:.1f}" y2="{cy}" stroke="{INK}" stroke-opacity=".16" stroke-dasharray="2 5" stroke-linecap="round"/>')
             p.append(f'<circle cx="{r1 + (-6 if sgn < 0 else 6) * 0:.1f}" cy="{cy}" r="2" fill="{INK}" fill-opacity=".2"/>')
-        svg(f"title-{key}", 880, 56, en, "\n  ".join(p))
+        svg(f"title-{key}", 880, 56 + TOP, en, "\n  ".join(p))
 
 
 # ------------------------------------------------------------------ about (one image, bento)
@@ -586,15 +589,16 @@ def support():
 
 
 def footer():
-    p = [tile("tf", 8, 1, 864, 150, glows=[("gSea", 800, 80, 180, "drift")], dots=True)]
-    p.append(T(34, 66, DISP, "© 2006 ~ 2026", INK, "m", ls=1))
-    p.append(T(34, 98, BODY, "埼玉・糟日部・陵樱学园高等部 / SOS团", INK, op=".86", ls=.5))
-    p.append(T(82, 120, META, "konakona", INK, op=SOFT, anchor="middle", ls=2))
-    p.append(T(34, 138, BODY, "@shirumesu", SEA, "m"))
-    p.append(f'<path class="draw" d="M32 145 C 56 142 96 146 132 143" fill="none" stroke="{SEA}" stroke-width="1.4" stroke-linecap="round"/>')
-    p.append(f'<line x1="700" y1="22" x2="700" y2="130" stroke="{INK}" stroke-opacity=".12" stroke-dasharray="3 4"/>')
-    p.append('<image href="@img/sos-logo.webp" x="742" y="16" width="96" height="119"/>')
-    svg("footer", 880, 152, "© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu", "\n  ".join(p))
+    """A sign-off, not a headline: the © line sits at heading size, one step under the page's display type."""
+    p = [tile("tf", 8, 1, 864, 134, glows=[("gSea", 800, 70, 170, "drift")], dots=True)]
+    p.append(T(34, 50, HEAD, "© 2006 ~ 2026", INK, "m", ls=1))
+    p.append(T(34, 78, BODY, "埼玉・糟日部・陵樱学园高等部 / SOS团", INK, op=".86", ls=.5))
+    p.append(T(82, 100, META, "konakona", INK, op=SOFT, anchor="middle", ls=2))
+    p.append(T(34, 120, BODY, "@shirumesu", SEA, "m"))
+    p.append(f'<path class="draw" d="M32 127 C 56 124 96 128 132 125" fill="none" stroke="{SEA}" stroke-width="1.4" stroke-linecap="round"/>')
+    p.append(f'<line x1="716" y1="22" x2="716" y2="114" stroke="{INK}" stroke-opacity=".12" stroke-dasharray="3 4"/>')
+    p.append('<image href="@img/sos-logo.webp" x="759" y="14" width="87" height="108"/>')
+    svg("footer", 880, 136, "© 2006 ~ 2026 埼玉 · 糟日部 · 陵樱学园高等部 / SOS团 @shirumesu", "\n  ".join(p))
 
 
 if __name__ == "__main__":

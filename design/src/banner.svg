@@ -62,7 +62,7 @@
   <rect x="8.5" y="1.5" width="863" height="537" rx="9.5" fill="none" stroke="#1F3A4A" stroke-opacity=".12"/>
   <rect x="9.5" y="2.5" width="861" height="535" rx="8.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
   <line x1="612" y1="44" x2="852" y2="44" stroke="#1F3A4A" stroke-opacity=".18"/>
-  <text x="614" y="38" font-size="12" fill="#1F3A4A" letter-spacing="1" fill-opacity=".62">Last updated</text>
+  <text x="614" y="38" font-size="12" fill="#1F3A4A" letter-spacing="1" fill-opacity=".7">Last updated</text>
   <text x="852" y="38" font-size="15" fill="#1F3A4A" text-anchor="end">2026.11.11 Wed.</text>
   <g transform="rotate(-4 80.0 102.0)"><g class="drop" style="animation-delay:0.05s"><rect x="28" y="29" width="108" height="152" fill="#1F3A4A" fill-opacity=".08"/><rect x="26" y="26" width="108" height="152" fill="#FAFCFB" stroke="#1F3A4A" stroke-opacity=".12"/><image href="@img/poster-haruhi.webp" x="30" y="30" width="100" height="144" preserveAspectRatio="xMidYMid slice"/><rect x="51.0" y="20.0" width="58" height="16" fill="#FAFCFB" fill-opacity=".8" stroke="#1F3A4A" stroke-opacity=".08" transform="rotate(8 80.0 28)"/></g></g>
   <g transform="rotate(4 794.0 231.0)"><g class="drop" style="animation-delay:0.2s"><rect x="746" y="159" width="100" height="150" fill="#1F3A4A" fill-opacity=".08"/><rect x="744" y="156" width="100" height="150" fill="#FAFCFB" stroke="#1F3A4A" stroke-opacity=".12"/><image href="@img/poster-steins.webp" x="748" y="160" width="92" height="142" preserveAspectRatio="xMidYMid slice"/><rect x="765.0" y="150.0" width="58" height="16" fill="#FAFCFB" fill-opacity=".8" stroke="#1F3A4A" stroke-opacity=".08" transform="rotate(-8 794.0 158)"/></g></g>
@@ -72,7 +72,7 @@
   <g class="land" style="animation-delay:0.40s"><text x="154" y="206" font-size="58" fill="#1F3A4A" data-w="m" letter-spacing="1">計画通り…</text></g>
   <g class="land" style="animation-delay:0.60s"><text x="40" y="516" font-size="30" fill="#177F98" letter-spacing="0.5">貧乳はステータスだ、希少価値だ!</text></g>
   <g class="land" style="animation-delay:0.75s"><text x="476" y="428" font-size="34" fill="#1F3A4A" data-w="x">山田尚子是神！</text></g>
-  <g class="pop" style="animation-delay:1.00s"><text x="176" y="100" font-size="12" fill="#1F3A4A" fill-opacity=".62">你能回到过去拯救那个没被 QB 欺骗的我吗</text></g>
+  <g class="pop" style="animation-delay:1.00s"><text x="176" y="100" font-size="12" fill="#1F3A4A" fill-opacity=".7">你能回到过去拯救那个没被 QB 欺骗的我吗</text></g>
   <g class="pop" style="animation-delay:1.07s"><text x="158" y="134" font-size="18" fill="#177F98">区区小司…</text></g>
   <g class="pop" style="animation-delay:1.14s"><text x="258" y="130" font-size="14" fill="#1F3A4A">我师傅的真实身份是…好人</text></g>
   <g transform="rotate(-5 494 140)"><g class="pop" style="animation-delay:1.21s"><text x="436" y="148" font-size="20" fill="#1F3A4A">アッシエント!</text></g></g>
@@ -82,18 +82,18 @@
   <g transform="rotate(-3 318 290)"><g class="pop" style="animation-delay:1.49s"><text x="206" y="300" font-size="27" fill="#1F3A4A">你这家伙在看我吧</text></g></g>
   <g class="pop" style="animation-delay:1.56s"><text x="446" y="296" font-size="17" fill="#177F98">秀吉的性别是秀吉啊!</text></g>
   <g class="pop" style="animation-delay:1.63s"><text x="604" y="56" font-size="17" fill="#177F98" letter-spacing="1" data-v="1">一即是全，全即是一</text></g>
-  <g class="pop" style="animation-delay:1.70s"><text x="634" y="214" font-size="15" fill="#1F3A4A" fill-opacity=".62">晚安，Sion</text></g>
-  <g class="pop" style="animation-delay:1.77s"><text x="36" y="226" font-size="15" fill="#1F3A4A" letter-spacing="1" fill-opacity=".62">吾且问，汝为人乎</text></g>
-  <g class="pop" style="animation-delay:1.84s"><text x="54" y="322" font-size="13" fill="#1F3A4A" fill-opacity=".62">立于浮华之世，奏响天籁之音</text></g>
+  <g class="pop" style="animation-delay:1.70s"><text x="634" y="214" font-size="15" fill="#1F3A4A" fill-opacity=".7">晚安，Sion</text></g>
+  <g class="pop" style="animation-delay:1.77s"><text x="36" y="226" font-size="15" fill="#1F3A4A" letter-spacing="1" fill-opacity=".7">吾且问，汝为人乎</text></g>
+  <g class="pop" style="animation-delay:1.84s"><text x="54" y="322" font-size="13" fill="#1F3A4A" fill-opacity=".7">立于浮华之世，奏响天籁之音</text></g>
   <g class="pop" style="animation-delay:1.91s"><text x="36" y="350" font-size="20" fill="#1F3A4A">为了我，成为炎拳吧</text></g>
   <g class="pop" style="animation-delay:1.98s"><text x="70" y="380" font-size="15" fill="#177F98">家庭教师是你真的太好了</text></g>
   <g transform="rotate(-3 150 464)"><g class="pop" style="animation-delay:2.05s"><text x="124" y="468" font-size="14" fill="#1F3A4A">有木有WIFI?</text></g></g>
   <g class="pop" style="animation-delay:2.12s"><text x="248" y="340" font-size="16" fill="#177F98">请别忘记，这最棒的一年</text></g>
-  <g class="pop" style="animation-delay:2.19s"><text x="428" y="320" font-size="12.5" fill="#1F3A4A" fill-opacity=".62">淑女只让她心仪的人摸她的头发哦</text></g>
+  <g class="pop" style="animation-delay:2.19s"><text x="428" y="320" font-size="12.5" fill="#1F3A4A" fill-opacity=".7">淑女只让她心仪的人摸她的头发哦</text></g>
   <g class="sweep" style="animation-delay:2.76s"><path d="M242 396 L248 368 L443.0 366 L437.0 394 Z" fill="#F4D35E" fill-opacity=".55"/></g><g class="stamp" style="animation-delay:2.26s"><text x="250" y="390" font-size="22" fill="#1F3A4A" data-w="m" letter-spacing="1">友情・</text></g><g class="stamp" style="animation-delay:2.40s"><text x="319.0" y="390" font-size="22" fill="#1F3A4A" data-w="m" letter-spacing="1">努力・</text></g><g class="stamp" style="animation-delay:2.54s"><text x="388.0" y="390" font-size="22" fill="#1F3A4A" data-w="m" letter-spacing="1">勝利</text></g>
   <g class="pop" style="animation-delay:2.33s"><text x="478" y="372" font-size="22" fill="#1F3A4A" data-w="x">欢迎回来，京阿尼</text></g>
   <g class="pop" style="animation-delay:2.40s"><text x="286" y="430" font-size="16" fill="#1F3A4A" fill-opacity=".86">明天，美食广场见</text></g>
-  <g class="pop" style="animation-delay:2.47s"><text x="222" y="458" font-size="15" fill="#1F3A4A" fill-opacity=".62">友谊是时间的窃贼</text></g>
+  <g class="pop" style="animation-delay:2.47s"><text x="222" y="458" font-size="15" fill="#1F3A4A" fill-opacity=".7">友谊是时间的窃贼</text></g>
   <g transform="rotate(-6 730 92)"><g class="stamp" style="animation-delay:2.4s"><rect x="626" y="64" width="216" height="54" fill="#1F3A4A"/><text x="734" y="104" font-size="33" fill="#FAFCFB" data-w="m" text-anchor="middle" letter-spacing="1">P5R天下第一</text></g></g>
   <g transform="rotate(-4 722 150)"><g class="pop" style="animation-delay:2.5s"><rect x="624" y="134" width="196" height="32" fill="#FAFCFB" fill-opacity=".92"/><rect x="624" y="134" width="196" height="32" fill="#177F98" fill-opacity=".16"/><text x="722" y="156" font-size="17" fill="#1F3A4A" text-anchor="middle" letter-spacing="2">EL PSY CONGROO</text></g></g>
   <g class="drop" style="animation-delay:2.6s"><g class="sway"><g transform="rotate(0 753.0 336.0)"><rect x="664" y="318" width="178" height="36" fill="#F4D35E" fill-opacity=".9"/><rect x="731.0" y="311.0" width="44" height="14" fill="#FAFCFB" fill-opacity=".8" stroke="#1F3A4A" stroke-opacity=".08" transform="rotate(0 753.0 318)"/></g><text x="753" y="342" font-size="18" fill="#1F3A4B" text-anchor="middle">放課後ティータイム</text></g></g>
@@ -110,9 +110,9 @@
   <path class="ink" style="animation-delay:2.5s;stroke-dasharray:760;stroke-dashoffset:760" d="M712 412 C 714 394 650 397 590 398 C 520 399 466 402 464 420 C 462 440 530 446 596 445 C 660 444 716 438 714 416 C 713 404 700 398 684 396" fill="none" stroke="#E5484D" stroke-opacity=".9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   <path class="ink" style="animation-delay:2.9s;stroke-dasharray:760;stroke-dashoffset:760" d="M470 406 C 490 394 560 395 610 395 C 670 395 722 401 720 420 C 718 442 650 448 588 448 C 520 448 458 440 462 418" fill="none" stroke="#E5484D" stroke-opacity=".75" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
   <path class="ink" style="animation-delay:2.7s;stroke-dasharray:520;stroke-dashoffset:520" d="M36 526 Q 76 521 116 526 T 196 526 T 276 526 T 356 526 T 436 526 T 494 524" fill="none" stroke="#1F3A4A" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <g class="pop" style="animation-delay:2.6s"><rect x="36" y="402" width="9" height="9" rx="1.5" fill="none" stroke="#1F3A4A" stroke-opacity=".45"/><text x="51" y="411" font-size="12" fill="#1F3A4A" fill-opacity=".62">追番</text><rect x="36" y="420" width="9" height="9" rx="1.5" fill="none" stroke="#1F3A4A" stroke-opacity=".45"/><text x="51" y="429" font-size="12" fill="#1F3A4A" fill-opacity=".62">早睡</text></g>
+  <g class="pop" style="animation-delay:2.6s"><rect x="36" y="402" width="9" height="9" rx="1.5" fill="none" stroke="#1F3A4A" stroke-opacity=".45"/><text x="51" y="411" font-size="12" fill="#1F3A4A" fill-opacity=".7">追番</text><rect x="36" y="420" width="9" height="9" rx="1.5" fill="none" stroke="#1F3A4A" stroke-opacity=".45"/><text x="51" y="429" font-size="12" fill="#1F3A4A" fill-opacity=".7">早睡</text></g>
   <path class="ink" style="animation-delay:2.8s;stroke-dasharray:20;stroke-dashoffset:20" d="M37 406 l 3 3 l 6 -8" fill="none" stroke="#177F98" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <g class="pop" style="animation-delay:2.65s"><text x="34" y="458" font-size="12" fill="#1F3A4A" fill-opacity=".62">(｀・ω・´)ゞ</text></g>
+  <g class="pop" style="animation-delay:2.65s"><text x="34" y="458" font-size="12" fill="#1F3A4A" fill-opacity=".7">(｀・ω・´)ゞ</text></g>
   <g transform="translate(274 424)"><path class="twinkle" style="animation-delay:-.9s" d="M0-5 1.1-1.1 5 0 1.1 1.1 0 5-1.1 1.1-5 0-1.1-1.1Z" fill="#177F98" fill-opacity=".6"/></g>
   <mask id="ans" maskUnits="userSpaceOnUse"><rect x="54.0" y="236.0" width="228.0" height="30.0" fill="white"><animate attributeName="width" values="0;0;228.0" keyTimes="0;0.698;1" begin="0s" dur="4.3s" fill="freeze" calcMode="spline" keySplines="0 0 1 1;.45 .05 .55 .95"/></rect></mask><g mask="url(#ans)"><text x="58" y="258" font-size="20" fill="#177F98" data-w="x">否，吾乃天——壶中之天</text></g>
   <g transform="translate(150 186)"><path class="twinkle" d="M0-6 1.3-1.3 6 0 1.3 1.3 0 6-1.3 1.3-6 0-1.3-1.3Z" fill="#F4D35E"/></g>

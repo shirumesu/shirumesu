@@ -58,7 +58,7 @@
   <rect x="262.0" y="184" width="56" height="26" rx="13" fill="none" stroke="#DCE8EC" stroke-opacity=".2"/>
   <text x="290.0" y="201.5" font-size="12" fill="#DCE8EC" text-anchor="middle">跨平台</text>
   <line x1="34" y1="242" x2="553" y2="242" stroke="#DCE8EC" stroke-opacity=".1"/>
-  <text x="34" y="270" font-size="12" fill="#DCE8EC" letter-spacing="0.5" fill-opacity=".62">Dart · Flutter</text>
+  <text x="34" y="270" font-size="12" fill="#DCE8EC" letter-spacing="0.5" fill-opacity=".7">Dart · Flutter</text>
   <text x="553" y="270" font-size="12" fill="#6CC6DC" text-anchor="end">shirumesu/MelonBanG ↗</text>
   <line class="flow" x1="565" y1="150" x2="587" y2="150" stroke="#6CC6DC" stroke-width="1.6"/>
   <circle cx="565" cy="150" r="3" fill="#6CC6DC"/>

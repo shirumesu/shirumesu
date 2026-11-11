@@ -48,6 +48,6 @@
   <text x="35" y="100" font-size="20" fill="#1F3A4A" data-w="m">羽衣 bot</text>
   <text x="35" y="134" font-size="15" fill="#1F3A4A" data-maxw="234" fill-opacity=".86">基于 Nonebot 的 QQ 机器人</text>
   <text x="35" y="158" font-size="15" fill="#1F3A4A" data-maxw="234" fill-opacity=".86">搜图、订阅、彩云续写……</text>
-  <text x="35" y="190" font-size="12" fill="#1F3A4A" letter-spacing="0.5" fill-opacity=".62">Python</text>
+  <text x="35" y="190" font-size="12" fill="#1F3A4A" letter-spacing="0.5" fill-opacity=".7">Python</text>
   <text x="258" y="190" font-size="12" fill="#177F98" text-anchor="end">↗</text>
 </svg>

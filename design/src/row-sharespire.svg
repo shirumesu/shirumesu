@@ -44,8 +44,8 @@
   </g>
   <rect x="8.5" y="4.5" width="423" height="75" rx="7.5" fill="none" stroke="#1F3A4A" stroke-opacity=".1"/>
   <rect x="9.5" y="5.5" width="421" height="73" rx="6.5" fill="none" stroke="url(#rim)" stroke-width="1.2"/>
-  <text x="31" y="37" font-size="12" fill="#1F3A4A" letter-spacing="2" fill-opacity=".62">MOD · 非原创</text>
+  <text x="31" y="37" font-size="12" fill="#1F3A4A" letter-spacing="2" fill-opacity=".7">MOD · 非原创</text>
   <text x="31" y="64" font-size="15" fill="#1F3A4A" data-w="m" data-maxw="200">ShareTheSpire2</text>
-  <text x="408" y="64" font-size="12" fill="#1F3A4A" text-anchor="end" data-maxw="180" fill-opacity=".62">杀戮尖塔 2 物品共享模组</text>
+  <text x="408" y="64" font-size="12" fill="#1F3A4A" text-anchor="end" data-maxw="180" fill-opacity=".7">杀戮尖塔 2 物品共享模组</text>
   <text x="408" y="37" font-size="12" fill="#177F98" text-anchor="end">↗</text>
 </svg>
